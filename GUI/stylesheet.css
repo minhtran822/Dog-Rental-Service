@@ -1,0 +1,33 @@
+h1 {
+    display: inline-block;
+    margin: 0;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    width: inherit;
+    z-index: 100;
+
+
+    padding: 10px;
+    margin: 0 0 10px 0;
+}
+
+/** Login form **/
+
+#user {
+    float: right;
+}
+
+#loginForm label {
+    display: inline-block;
+    width: 90px;
+}
+
+nav{
+    position: fixed;
+    margin: 100px auto 0;
+    top: 0;
+    left: 0;
+}
