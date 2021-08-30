@@ -1,3 +1,8 @@
+
+*{
+    box-sizing: border-box; /* box size include border and padding*/
+}
+
 h1 {
     display: inline-block;
     margin: 0;
@@ -25,9 +30,25 @@ header{
     width: 90px;
 }
 
+/** side bar **/
 nav{
     position: fixed;
     margin: 100px auto 0;
     top: 0;
     left: 0;
+}
+
+/** main body **/
+main{
+    margin-top: 100px;
+    margin-left: 160px;
+}
+
+.dogs {
+    clear: both;
+}
+
+.dogs img{
+    float: left;
+    margin-right: 10px;
 }
