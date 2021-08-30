@@ -38,6 +38,11 @@ nav{
     left: 0;
 }
 
+nav ul {
+    list-style-type: none;
+    text-align: left;
+}
+
 /** main body **/
 main{
     margin-top: 100px;
