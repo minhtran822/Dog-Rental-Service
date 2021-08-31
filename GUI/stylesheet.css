@@ -3,6 +3,11 @@
     box-sizing: border-box; /* box size include border and padding*/
 }
 
+body{
+    width: 700px;
+    margin: 0 auto;
+}
+
 h1 {
     display: inline-block;
     margin: 0;
@@ -17,6 +22,7 @@ header{
 
     padding: 10px;
     margin: 0 0 10px 0;
+    background-color: lightpink;
 }
 
 /** Login form **/
@@ -33,9 +39,9 @@ header{
 /** side bar **/
 nav{
     position: fixed;
-    margin: 100px auto 0;
-    top: 0;
-    left: 0;
+    top: 100px;
+    background-color: palevioletred;
+    height: 100%;
 }
 
 nav ul {
@@ -45,8 +51,10 @@ nav ul {
 
 /** main body **/
 main{
-    margin-top: 100px;
     margin-left: 160px;
+    margin-top: 100px;
+    padding-top: 10px;
+    clear: both;
 }
 
 .dogs {
