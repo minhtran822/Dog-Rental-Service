@@ -64,7 +64,8 @@ var Dogs = (function(){
                         $(dogInfoDiv).append("<p> Size: " + dog.dogSize + "</p>");
                         $(dogInfoDiv).append("<p> " + dog.description + "</p>");
                         $(dogInfoDiv).append("<p> Price: $<span class=\"price\">" + dog.pricePerHour + "</span>" +
-                            " <input type=\"button\" class=\"chooseDog\" value=\"Select\"></p>");
+                            "<br> <input type=\"button\" class=\"viewDog\" value=\"More Info\">" +
+                            "&nbsp&nbsp<input type=\"button\" class=\"chooseDog\" value=\"Add To Booking\"></p>");
                         $(dogDiv).append(dogInfoDiv);
 
                         $(target).append(dogDiv);
@@ -92,14 +93,16 @@ var Dogs = (function(){
 
     function viewADog(e){
         var selectedDog = $(e.target).closest(".dogs");
+
+        $(".viewDog").remove();
         window.localStorage.setItem("view", JSON.stringify($(selectedDog).html()));
-        console.log("Clicked");
+        console.log(JSON.stringify($(selectedDog).html()));
         window.location.href = "../GUI/view.html";
     }
 
     pub.setup = function (){
         getDogs();
-        $("main").on("click", ".dogs", viewADog);
+        $("main").on("click", ".viewDog", viewADog);
     };
 
     return pub;
