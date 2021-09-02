@@ -3,8 +3,7 @@ var Dogs = (function(){
 
     function getDogs() {
         console.log("Get Dogs called");
-        var target = $("main")
-        var imgSource = $($(this).parent().find('img')[0]).attr('src');
+        var target = $("main");
         var jsonSource = "../src/animals.json";
 
 
@@ -23,7 +22,7 @@ var Dogs = (function(){
 
     function insertDog(data, target){
         var animals, dogs, i, dog, undefinedError;
-        var imageSource, imageName;
+        var imageName;
 
         undefinedError = false;
 
@@ -31,50 +30,53 @@ var Dogs = (function(){
         $(target).empty();
         console.log("Ok here");
 
-        animals = data.animals;
+        if(Object.keys(data).includes("animals")) {
 
-        //TODO: Expand to other animals if possible
-        if(animals.dogs!==undefined) {
-            dogs = animals.dogs;
+            animals = data.animals;
 
-            for (i = 0; i < dogs.length; i++) {
-                dog = dogs[i];
 
-                if(dog.dogName !== undefined &&
-                        dog.dogId!== undefined &&
-                        dog.dogSize!==undefined &&
-                        dog.dogType!== undefined &&
-                        dog.description !== undefined &&
-                        dog.pricePerHour!== undefined) {
+            //TODO: Expand to other animals if possible
+            if (Object.keys(animals).includes("dogs")) {
+                dogs = animals.dogs;
 
-                    //generate image source
-                    imageName = dog.dogSize.toLowerCase();
+                for (i = 0; i < dogs.length; i++) {
+                    dog = dogs[i];
 
-                    var dogDiv = document.createElement('div');
-                    var dogInfoDiv = document.createElement('div');
-                    $(dogDiv).addClass("dogs");
-                    $(dogInfoDiv).addClass("dogInfo")
+                    //Check if the dog object keys exist in the structure of json
+                    var dogKeys = ["dogName", "dogId", "dogSize", "description", "pricePerHour"];
+                    if (dogKeys.every(i => Object.keys(dog).includes(i))) {
 
-                    //Create image from image source
-                    $(dogDiv).append("<img src='../images/"+ imageName+".jpg' alt='" +dog.dogType + "'>");
+                        //generate image source
+                        imageName = dog.dogSize.toLowerCase();
 
-                    //Create div dog info
-                    $(dogInfoDiv).append("<h3>" + dog.dogName + "</h3>");
-                    $(dogInfoDiv).append("<p> ID: " + dog.dogId + "</p>");
-                    $(dogInfoDiv).append("<p> Breed: " + dog.dogType + "</p>");
-                    $(dogInfoDiv).append("<p> Size: " + dog.dogSize + "</p>");
-                    $(dogInfoDiv).append("<p> " + dog.description + "</p>");
-                    $(dogInfoDiv).append("<p> Price: $<span class=\"price\">" + dog.pricePerHour + "</span>" +
-                        " <input type=\"button\" class=\"chooseDog\" value=\"Select\"></p>");
-                    $(dogDiv).append(dogInfoDiv);
+                        var dogDiv = document.createElement('div');
+                        var dogInfoDiv = document.createElement('div');
+                        $(dogDiv).addClass("dogs");
+                        $(dogInfoDiv).addClass("dogInfo")
 
-                    $(target).append(dogDiv);
+                        //Create image from image source
+                        $(dogDiv).append("<img src='../images/" + imageName + ".jpg' alt='" + dog.dogType + "'>");
 
-                } else {
-                    undefinedError = true;
-                    break;
+                        //Create div dog info
+                        $(dogInfoDiv).append("<h3>" + dog.dogName + "</h3>");
+                        $(dogInfoDiv).append("<p> ID: " + dog.dogId + "</p>");
+                        $(dogInfoDiv).append("<p> Breed: " + dog.dogType + "</p>");
+                        $(dogInfoDiv).append("<p> Size: " + dog.dogSize + "</p>");
+                        $(dogInfoDiv).append("<p> " + dog.description + "</p>");
+                        $(dogInfoDiv).append("<p> Price: $<span class=\"price\">" + dog.pricePerHour + "</span>" +
+                            " <input type=\"button\" class=\"chooseDog\" value=\"Select\"></p>");
+                        $(dogDiv).append(dogInfoDiv);
+
+                        $(target).append(dogDiv);
+
+                    } else {
+                        undefinedError = true;
+                        break;
+                    }
+
                 }
-
+            } else {
+                undefinedError = true;
             }
         } else {
             undefinedError = true;
@@ -88,8 +90,16 @@ var Dogs = (function(){
 
     }
 
+    function viewADog(e){
+        var selectedDog = $(e.target).closest(".dogs");
+        window.localStorage.setItem("view", JSON.stringify($(selectedDog).html()));
+        console.log("Clicked");
+        window.location.href = "../GUI/view.html";
+    }
+
     pub.setup = function (){
-        $("main").onload=getDogs();
+        getDogs();
+        $("main").on("click", ".dogs", viewADog);
     };
 
     return pub;
