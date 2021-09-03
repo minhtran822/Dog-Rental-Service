@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Track</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <script src="../helpers/jQuery/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../helpers/leaflet/leaflet.css"/>
+    <script src="../helpers/leaflet/leaflet.js"></script>
+    <script src="../scripts/map.js"></script>
 </head>
 <body>
     <header>
@@ -16,7 +20,9 @@
                     <label for="loginPassword">Password: </label>
                     <input type="text" for="loginPassword" id="loginPassword"><br>
                     <input type="submit" id="loginSubmit" value="Login"><br>
-                    <input type="button" id="loginAdmin" value="Login as Admin">
+                    <a href="admin.html">
+                        <input type="button" id="loginAdmin" value="Login as Admin">
+                    </a>
                 </form>
             </div>
         </div>
@@ -28,22 +34,22 @@
             <li><a href="index.html">Home</a>
             <li><a href="animals.html">View Dogs</a>
             <li><a href="booking.html">View Booking</a>
-            <li class="current">Points of Interest
-            <li class="admin">Admins</li>
+            <li class="current">Points of Interest</li>
         </ul>
     </nav>
 
     <main>
-        <div class="map">
+        <div id="map">
 
         </div>
-        <ul class="pointsOfInterest">
+        <ul id="pointsOfInterest">
             <li>
                 <h3>Car Rental Office</h3>
             </li>
         </ul>
     </main>
     <footer></footer>
+
 
 </body>
 </html>

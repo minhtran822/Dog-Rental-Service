@@ -24,6 +24,7 @@ header{
     position: fixed;
     top: 0;
     width: inherit;
+    min-height: 97px;
     z-index: 100;
 
 
@@ -114,7 +115,6 @@ main p{
 }
 
 /** View Dogs page **/
-
 .dogs {
     display: inline-flex;
     clear: both;
@@ -131,6 +131,29 @@ main p{
 
 .dogs:hover{
     background-color: lightsalmon;
+}
+
+/** POI page **/
+#map{
+    width: 90%;
+    height: 500px;
+    margin: 10px auto;
+    z-index: 0;
+}
+
+/** Admin page **/
+table{
+    margin: 10px auto;
+    border-collapse: collapse;
+}
+
+th, td{
+    border: 1px solid black;
+    padding: 2px 5px;
+}
+
+tbody tr :nth-child(4){
+    text-align: center;
 }
 
 /* adjust for smaller screen */
