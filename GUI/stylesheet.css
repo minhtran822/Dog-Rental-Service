@@ -103,9 +103,17 @@ main p{
     margin: 10px 0;
 }
 
+
+/** Index page **/
 .welcome{
     margin: 10px;
 }
+
+.review{
+    text-align: center;
+}
+
+/** View Dogs page **/
 
 .dogs {
     display: inline-flex;
