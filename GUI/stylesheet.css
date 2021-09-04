@@ -141,6 +141,26 @@ main p{
     z-index: 0;
 }
 
+ul#pointsOfInterest {
+    list-style-type: none;
+    width: 90%;
+    margin: 10px auto;
+}
+
+#pointsOfInterest li{
+    width: 80%;
+    margin: 10px auto;
+}
+
+#pointsOfInterest p{
+    clear: right;
+}
+
+#pointsOfInterest input{
+    margin-right: 10px;
+    float: right;
+}
+
 /** Admin page **/
 table{
     margin: 10px auto;
