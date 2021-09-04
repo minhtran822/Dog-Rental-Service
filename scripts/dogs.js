@@ -10,8 +10,8 @@ var Dogs = (function(){
         var pickupDate = new Date($("input[type=date]#pickupDate").val());
         var numHours = $("#numHours").val();
 
-        window.localStorage.setItem("time", pickupTime +","+pickupDate.getDate()+"/"+pickupDate.getMonth()+'/'+pickupDate.getFullYear());
-        window.localStorage.setItem("hours", numHours);
+        window.sessionStorage.setItem("time", pickupTime +","+pickupDate.getDate()+"/"+pickupDate.getMonth()+'/'+pickupDate.getFullYear());
+        window.sessionStorage.setItem("hours", numHours);
 
         $.ajax({
             type: "GET",
@@ -24,10 +24,12 @@ var Dogs = (function(){
                 alert("Can't connect to the json");
             }
         });
+
+        $("form#pickupSelect *").attr('disabled', true);
     }
 
     function insertDog(data, target){
-        var animals, dogs, i, dog, undefinedError;
+        var dogs, i, dog, undefinedError;
         var imageName;
 
 
@@ -36,56 +38,46 @@ var Dogs = (function(){
 
         //Reset the dogs area
         $(target).empty();
-        console.log("Ok here");
 
-        if(Object.keys(data).includes("animals")) {
+        //TODO: Expand to other animals if possible
+        if (data.animals && data.animals.dogs) {
+            dogs = data.animals.dogs;
 
-            animals = data.animals;
+            for (i = 0; i < dogs.length; i++) {
+                dog = dogs[i];
 
+                //Check if the dog object keys exist in the structure of json
+                var dogKeys = ["dogName", "dogId", "dogSize", "description", "pricePerHour"];
+                if (dogKeys.every(i => Object.keys(dog).includes(i))) {
 
-            //TODO: Expand to other animals if possible
-            if (Object.keys(animals).includes("dogs")) {
-                dogs = animals.dogs;
+                    //generate image source
+                    imageName = dog.dogSize.toLowerCase();
 
-                for (i = 0; i < dogs.length; i++) {
-                    dog = dogs[i];
+                    var dogDiv = document.createElement('div');
+                    var dogInfoDiv = document.createElement('div');
+                    $(dogDiv).addClass("dogs");
+                    $(dogInfoDiv).addClass("dogInfo")
 
-                    //Check if the dog object keys exist in the structure of json
-                    var dogKeys = ["dogName", "dogId", "dogSize", "description", "pricePerHour"];
-                    if (dogKeys.every(i => Object.keys(dog).includes(i))) {
+                    //Create image from image source
+                    $(dogDiv).append("<img src='../images/" + imageName + ".jpg' alt='" + dog.dogType + "'>");
 
-                        //generate image source
-                        imageName = dog.dogSize.toLowerCase();
+                    //Create div dog info
+                    $(dogInfoDiv).append("<h3>" + dog.dogName + "</h3>");
+                    $(dogInfoDiv).append("<p> ID: <span class=\"dogId\">"+dog.dogId+"</span></p>");
+                    $(dogInfoDiv).append("<p> Breed: " + dog.dogType + "</p>");
+                    $(dogInfoDiv).append("<p> Size: " + dog.dogSize + "</p>");
+                    $(dogInfoDiv).append("<p> " + dog.description + "</p>");
+                    $(dogInfoDiv).append("<p> Price: $<span class=\"price\">" + dog.pricePerHour + "</span>" +
+                        "<br><input type=\"button\" class=\"chooseDog\" value=\"Add To Booking\"></p>");
+                    $(dogDiv).append(dogInfoDiv);
 
-                        var dogDiv = document.createElement('div');
-                        var dogInfoDiv = document.createElement('div');
-                        $(dogDiv).addClass("dogs");
-                        $(dogInfoDiv).addClass("dogInfo")
+                    $(target).append(dogDiv);
 
-                        //Create image from image source
-                        $(dogDiv).append("<img src='../images/" + imageName + ".jpg' alt='" + dog.dogType + "'>");
-
-                        //Create div dog info
-                        $(dogInfoDiv).append("<h3>" + dog.dogName + "</h3>");
-                        $(dogInfoDiv).append("<p> ID: <span class=\"dogId\">"+dog.dogId+"</span></p>");
-                        $(dogInfoDiv).append("<p> Breed: " + dog.dogType + "</p>");
-                        $(dogInfoDiv).append("<p> Size: " + dog.dogSize + "</p>");
-                        $(dogInfoDiv).append("<p> " + dog.description + "</p>");
-                        $(dogInfoDiv).append("<p> Price: $<span class=\"price\">" + dog.pricePerHour + "</span>" +
-                            "<br> <input type=\"button\" class=\"viewDog\" value=\"More Info\">" +
-                            "&nbsp&nbsp<input type=\"button\" class=\"chooseDog\" value=\"Add To Booking\"></p>");
-                        $(dogDiv).append(dogInfoDiv);
-
-                        $(target).append(dogDiv);
-
-                    } else {
-                        undefinedError = true;
-                        break;
-                    }
-
+                } else {
+                    undefinedError = true;
+                    break;
                 }
-            } else {
-                undefinedError = true;
+
             }
         } else {
             undefinedError = true;
@@ -99,17 +91,9 @@ var Dogs = (function(){
 
     }
 
-    function viewADog(e){
-        var selectedDog = $(e.target).closest(".dogs");
-
-        $(".viewDog").remove();
-        window.localStorage.setItem("view", JSON.stringify($(selectedDog).html()));
-        window.location.href = "../GUI/view.html";
-    }
-
     pub.setup = function (){
         $("#pickupSelect").submit(getDogs);
-        $(".availableDogs").on("click", ".viewDog", viewADog);
+        /*$(".availableDogs").on("click", ".viewDog", viewADog);*/
     };
 
     return pub;

@@ -1,7 +1,7 @@
 var Reviews = (function (){
     var pub ={};
 
-    function getReviews(e){
+    function getReviews(){
         console.log("Get Reviews called");
         var target = $(".reviews")
         var jsonSource = "../reviews/reviews.json";

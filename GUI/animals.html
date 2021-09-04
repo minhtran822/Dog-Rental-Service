@@ -30,15 +30,17 @@
         <ul>
             <li><a href="index.html">Home</a>
             <li class="current">View Dogs
-            <li><a href="booking.html">View Booking</a>
             <li><a href="tracks.html">Points of Interest</a></li>
         </ul>
     </nav>
     <main>
         <form id="pickupSelect">
+            <label for="pickupDate">Date: </label>
             <input type="date" id="pickupDate" name="pickupDate"
                    value="2021-07-22"
                    min="2021-01-01" max="2022-12-31" required>
+            <br>
+            <label for="pickupTime">Time:</label>
             <input type="time" id="pickupTime" name="pickupTime"
                    value="14:00"
                    min="09:00" max="18:00" required>
@@ -49,6 +51,16 @@
             <small id="numHoursError">Please put in number of hours.</small>
             <br>
             <input type="submit" id="applyPickup" value="See Available dogs">
+        </form>
+        <div id="bookingDetails"></div>
+        <form id="bookingInfo">
+            <label for="bookingName">Name: </label>
+            <input type="text" id="bookingName" required>
+            <small id="bookingNameError"></small>
+            <br>
+            <input type="submit" id="bookingSave" value="Save">
+            <input type="button" id="newBooking" value="New Booking">
+            <small id="bookingSaveError"></small>
         </form>
         <div class="availableDogs">
             <div class="dogs">
@@ -61,7 +73,6 @@
                     <p>Excellant lap dog, doesn't shed.</p>
                     <p>Price: $
                         <span class="price">3.0</span>
-                        <br> <input type="button" class="viewDog" value="More Info">
                     </p>
                 </div>
             </div>
@@ -75,7 +86,6 @@
                     <p>Very energetic, loves water. Good with kids</p>
                     <p>Price: $
                         <span class="price">5.0</span>
-                        <br> <input type="button" class="viewDog" value="More Info">
                     </p>
                 </div>
             </div>
@@ -89,7 +99,6 @@
                     <p>Eats everything, very friendly. Slobbers a lot.</p>
                     <p>Price: $
                         <span class="price">5.0</span>
-                        <br> <input type="button" class="viewDog" value="More Info">
                     </p>
                 </div>
             </div>
@@ -103,7 +112,6 @@
                     <p>Excellant horse replacement</p>
                     <p>Price: $
                         <span class="price">10.0</span>
-                        <br> <input type="button" class="viewDog" value="More Info">
                     </p>
                 </div>
             </div>

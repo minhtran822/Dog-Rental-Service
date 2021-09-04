@@ -3,7 +3,7 @@ var Booking = (function (){
 
    function addBooking(e){
       var selectedDog = $(e.target).closest(".dogInfo").find(".dogId");
-      var currentBooking = JSON.parse(window.localStorage.getItem("currentBooking"));
+      var currentBooking = JSON.parse(window.sessionStorage.getItem("currentBooking"));
       var items = [];
 
       if(currentBooking !== null){
@@ -25,13 +25,15 @@ var Booking = (function (){
          alert("You have added the full limit of 3 dogs");
       }
 
-      window.localStorage.setItem("currentBooking", JSON.stringify(items));
+      window.sessionStorage.setItem("currentBooking", JSON.stringify(items));
+
+      viewBooking();
    }
 
    function viewBooking(e){
-      $("#bookingDetails").append(
-          "<p>Pickup time: "+window.localStorage.getItem("time")+"</p>"+
-          "<p>Number of hours: "+window.localStorage.getItem("hours")+"</p>"+
+      $("#bookingDetails").empty().append(
+          "<p>Pickup time: "+window.sessionStorage.getItem("time")+"</p>"+
+          "<p>Number of hours: "+window.sessionStorage.getItem("hours")+"</p>"+
           "<p>Items: </p>"
       );
 
@@ -45,8 +47,7 @@ var Booking = (function (){
 
    function loadItems(itemsDiv){
 
-      var items = JSON.parse(window.localStorage.getItem("currentBooking"));
-      console.log(Array.isArray(items));
+      var items = JSON.parse(window.sessionStorage.getItem("currentBooking"));
       $(itemsDiv).empty();
       if(Array.isArray(items)){
          items.forEach(function(item){
@@ -60,35 +61,69 @@ var Booking = (function (){
    function removeBooking(e){
 
       var index = $(this).parent().index();
-      var items = JSON.parse(window.localStorage.getItem("currentBooking"));
+      var items = JSON.parse(window.sessionStorage.getItem("currentBooking"));
 
       items.splice(index,1);
-      window.localStorage.setItem("currentBooking", JSON.stringify(items));
+      window.sessionStorage.setItem("currentBooking", JSON.stringify(items));
 
-      location.reload();
+      viewBooking();
    }
 
-   function saveBooking(e){
+
+
+   function newBooking(e){
+      //e
+      if(confirm("Are you sure you want to delete current booking and make a new one?")) {
+         $("form#pickupSelect *").attr('disabled', false);
+         window.sessionStorage.clear();
+         window.location.reload();
+      } else {
+         console.log("uh");
+      }
+   }
+
+   function redirectPrevention(e){
+      e.preventDefault();
+      if(confirm("Are you sure you want to move to a new page? \n The current booking won't be saved")) {
+         $("form#pickupSelect *").attr('disabled', false);
+         window.sessionStorage.clear();
+         window.location.href = $(this).attr("href");
+      } else {
+         console.log("uh");
+      }
+   }
+
+   pub.saveBooking= function (e){
       var booking;
       if($("bookingNameError").html()!== ""){
          booking = {
-            items:  JSON.parse(window.localStorage.getItem("currentBooking")),
+            items:  JSON.parse(window.sessionStorage.getItem("currentBooking")),
             name: $("#bookingName").val(),
-            pickup: window.localStorage.getItem("time"),
-            numHours: window.localStorage.getItem("hours")
+            pickup: window.sessionStorage.getItem("time"),
+            numHours: window.sessionStorage.getItem("hours")
          };
 
-         window.localStorage.clear();
-         window.localStorage.setItem("booking", JSON.stringify(booking));
-         alert("Saving Successful");
+         if(!(booking.items && booking.pickup && booking.numHours)){
+            $("#bookingSaveError").html("Please choose date, time and some items before saving");
+         } else {
+            $("#bookingSaveError").html("");
+            window.sessionStorage.clear();
+            window.localStorage.setItem("booking", JSON.stringify(booking));
+            alert("Booking saved");
+            window.location.reload();
+         }
+
       }
    }
 
    pub.setup = function (){
+      $("#pickupSelect").submit(viewBooking);
       $("main").on("click", ".chooseDog", addBooking);
-      $("#bookingDetails").onload = viewBooking();
+      viewBooking();
       $("#bookingDetails").on("click", ".remove", removeBooking);
-      $("#bookingInfo").submit(saveBooking);
+      $("#newBooking").click(newBooking);
+      $("nav a").click(redirectPrevention);
+      $("#loginForm a").click(redirectPrevention);
    }
 
    return pub;

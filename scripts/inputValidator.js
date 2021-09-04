@@ -28,7 +28,7 @@ var InputValidator = (function (){
         return true;
     }
 
-    function checkBookingName(e){
+    function checkBookingName(){
         var bookingName = $("#bookingName").val();
         if(!checkNotEmpty(bookingName)){
             $("#bookingNameError").html("Please put in a name of booking");
@@ -36,14 +36,21 @@ var InputValidator = (function (){
             $("#bookingNameError").html("The name must be 2 or longer");
         }else{
             $("#bookingNameError").html("");
+            return true;
         }
+        return false;
+    }
 
-        console.log(bookingName);
+    function readyToSave(e){
+        e.preventDefault();
+        if(checkBookingName()) {
+            Booking.saveBooking(e);
+        }
     }
 
     pub.setup=function (){
         $("#numHours").keypress(checkKeyIsDigit);
-        $("#bookingName").change(checkBookingName);
+        $("#bookingInfo").submit(readyToSave);
     }
 
     return pub;
