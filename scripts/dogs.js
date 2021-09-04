@@ -59,7 +59,7 @@ var Dogs = (function(){
 
                         //Create div dog info
                         $(dogInfoDiv).append("<h3>" + dog.dogName + "</h3>");
-                        $(dogInfoDiv).append("<p> ID: " + dog.dogId + "</p>");
+                        $(dogInfoDiv).append("<p> ID: <span class=\"dogId\">"+dog.dogId+"</span></p>");
                         $(dogInfoDiv).append("<p> Breed: " + dog.dogType + "</p>");
                         $(dogInfoDiv).append("<p> Size: " + dog.dogSize + "</p>");
                         $(dogInfoDiv).append("<p> " + dog.description + "</p>");
@@ -96,9 +96,9 @@ var Dogs = (function(){
 
         $(".viewDog").remove();
         window.localStorage.setItem("view", JSON.stringify($(selectedDog).html()));
-        console.log(JSON.stringify($(selectedDog).html()));
         window.location.href = "../GUI/view.html";
     }
+
 
     pub.setup = function (){
         getDogs();
