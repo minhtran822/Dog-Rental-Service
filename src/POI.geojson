@@ -2,72 +2,199 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "type": "campsite",
-        "name": "Car Rental Office"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          170.5153065919876,
-          -45.90540437585189
-        ]
-      }
+            "type": "Feature",
+            "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "type": "landmark",
+            "name": "Dog Rental Company"
+            },
+            "geometry": {
+            "type": "Point",
+            "coordinates": [
+            170.51572468229702,
+            -45.86539720782294]
+            }
+    },
+
+    {
+            "type": "Feature",
+            "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "small",
+            "marker-symbol": "",
+            "type": "campsite",
+            "name": "Car Rental Office"
+            },
+            "geometry": {
+            "type": "Point",
+            "coordinates": [
+              170.5153065919876,
+              -45.90540437585189
+            ]
+            }
     },
     {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "triangle",
-        "name": "St Clair Beach",
-        "type": "landmark"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          170.49052566289902,
-          -45.911734850052895
-        ]
-      }
+            "type": "Feature",
+            "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "triangle",
+            "name": "St Clair Beach",
+            "type": "landmark"
+            },
+            "geometry": {
+            "type": "Point",
+            "coordinates": [
+              170.49052566289902,
+              -45.911734850052895
+            ]
+            }
     },
     {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Hot Water Pool",
-        "type": "landmark"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          170.48803120851517,
-          -45.913724171912456
-        ]
-      }
+            "type": "Feature",
+            "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "name": "Hot Water Pool",
+            "type": "landmark"
+            },
+            "geometry": {
+            "type": "Point",
+            "coordinates": [
+              170.48803120851517,
+              -45.913724171912456
+            ]
+            }
     },
     {
-          "type": "Feature",
-          "properties": {
+            "type": "Feature",
+            "properties": {
             "marker-color": "#7e7e7e",
             "marker-size": "medium",
             "marker-symbol": "",
             "type": "restaurant",
             "name": "Esplanade"
-          },
-          "geometry": {
+            },
+            "geometry": {
             "type": "Point",
             "coordinates": [
               170.49030303955075,
               -45.911675131971606
             ]
-          }
-        }
+            }
+    },
+    {
+            "type": "Feature",
+            "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "type": "walking track",
+            "name": "St. Clair Walk"
+            },
+            "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [170.48803120851517,
+              -45.913724171912456],
+              [170.48845727205148,
+              -45.91282357410357],
+              [170.49030303955075,
+              -45.911675131971606],
+              [170.49052566289902,
+              -45.911734850052895]]
+            }
+    },
+    {
+            "type": "Feature",
+            "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "type": "park",
+            "name": "Bayfield Park"
+            },
+            "geometry": {
+            "type": "Point",
+            "coordinates": [
+            170.52585748029728,
+            -45.894070426829]
+            }
+    },
+    {
+            "type": "Feature",
+            "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "type": "walking track",
+            "name": "Bayfield Walk"
+            },
+            "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [170.5280938417195,
+              -45.892532176410796],
+              [170.52119877641186,
+              -45.89408536109025],
+              [170.51898634112626,
+              -45.893786675102305],
+              [170.52147801581685,
+              -45.891158169139274]]
+            }
+    },
+    {
+            "type": "Feature",
+            "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "type": "park",
+            "name": "The Oval"
+            },
+            "geometry": {
+            "type": "Point",
+            "coordinates": [
+            170.49794712349788,
+            -45.88821588707]
+            }
+    },
+    {
+            "type": "Feature",
+            "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "type": "landmark",
+            "name": "Long Beach"
+            },
+            "geometry": {
+            "type": "Point",
+            "coordinates": [
+            170.6451492136558,
+            -45.75614592646953]
+            }
+    },
+    {
+            "type": "Feature",
+            "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "type": "walking track",
+            "name": "Long Beach Track"
+            },
+            "geometry": {
+            "type": "LineString",
+            "coordinates": [
+            [170.64824232706482,
+            -45.7529719184662],
+            [170.64136874171143,
+            -45.74476657078662]
+            ]}
+    }
   ]
 }
