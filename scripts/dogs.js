@@ -1,11 +1,17 @@
 var Dogs = (function(){
     var pub = {};
 
-    function getDogs() {
+    function getDogs(e) {
+        e.preventDefault();
         console.log("Get Dogs called");
-        var target = $("main");
+        var target = $(".availableDogs");
         var jsonSource = "../src/animals.json";
+        var pickupTime = $("input[type=time]#pickupTime").val();
+        var pickupDate = new Date($("input[type=date]#pickupDate").val());
+        var numHours = $("#numHours").val();
 
+        window.localStorage.setItem("time", pickupTime +","+pickupDate.getDate()+"/"+pickupDate.getMonth()+'/'+pickupDate.getFullYear());
+        window.localStorage.setItem("hours", numHours);
 
         $.ajax({
             type: "GET",
@@ -24,6 +30,8 @@ var Dogs = (function(){
         var animals, dogs, i, dog, undefinedError;
         var imageName;
 
+
+        console.log($("input[type=time]#pickupTime").val());
         undefinedError = false;
 
         //Reset the dogs area
@@ -99,10 +107,9 @@ var Dogs = (function(){
         window.location.href = "../GUI/view.html";
     }
 
-
     pub.setup = function (){
-        getDogs();
-        $("main").on("click", ".viewDog", viewADog);
+        $("#pickupSelect").submit(getDogs);
+        $(".availableDogs").on("click", ".viewDog", viewADog);
     };
 
     return pub;
