@@ -61,13 +61,13 @@ nav ul {
 
 nav li.current {
     margin: 5px;
-    padding: 12.5px;
+    padding: 13px;
 }
 
 nav li:hover {
 
     margin: 5px;
-    padding: 12.5px;
+    padding: 13px;
 }
 
 nav li{
@@ -119,6 +119,14 @@ main p{
     padding: 10px;
 }
 
+#bookingNameError, #bookingSaveError{
+    color: red;
+}
+
+#bookingDetails{
+    height: 175px;
+}
+
 .dogs {
     display: inline-flex;
     clear: both;
@@ -165,10 +173,6 @@ ul#pointsOfInterest {
     float: right;
 }
 
-/** Booking page **/
-#bookingDetails{
-    height: 175px;
-}
 
 /** Admin page **/
 table{

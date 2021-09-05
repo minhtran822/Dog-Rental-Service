@@ -1,12 +1,16 @@
-var InputValidator = (function (){
-    var pub={};
+/*global Booking, $*/
+// noinspection RedundantIfStatementJS
+
+let InputValidator = (function (){
+    "use strict";
+    let pub={};
 
     function checkNotEmpty(textValue) {
         return textValue.trim().length > 0;
     }
 
     function checkLength(textValue, minLength, maxLength) {
-        var length = textValue.length;
+        let length = textValue.length;
         if (maxLength === undefined) {
             maxLength = minLength;
         }
@@ -15,13 +19,14 @@ var InputValidator = (function (){
 
     function checkKeyIsDigit(event) {
         // Cross-browser key recognition - see http://stackoverflow.com/questions/1444477/keycode-and-charcode
-        var characterPressed, zero, nine;
+        let characterPressed, zero, nine;
         zero = "0";
         nine = "9";
         characterPressed = event.keyCode || event.which || event.charCode;
         if (characterPressed < zero.charCodeAt(0)) {
             return false;
         }
+
         if (characterPressed > nine.charCodeAt(0)) {
             return false;
         }
@@ -29,7 +34,7 @@ var InputValidator = (function (){
     }
 
     function checkBookingName(){
-        var bookingName = $("#bookingName").val();
+        let bookingName = $("#bookingName").val();
         if(!checkNotEmpty(bookingName)){
             $("#bookingNameError").html("Please put in a name of booking");
         }else if(!checkLength(bookingName,2)){
@@ -51,7 +56,7 @@ var InputValidator = (function (){
     pub.setup=function (){
         $("#numHours").keypress(checkKeyIsDigit);
         $("#bookingInfo").submit(readyToSave);
-    }
+    };
 
     return pub;
 }());

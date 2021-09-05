@@ -1,14 +1,18 @@
-var Dogs = (function(){
-    var pub = {};
+/*global console, $, alert*/
+// noinspection JSUnresolvedVariable
+
+let Dogs = (function(){
+    "use strict";
+    let pub = {};
 
     function getDogs(e) {
         e.preventDefault();
         console.log("Get Dogs called");
-        var target = $(".availableDogs");
-        var jsonSource = "../src/animals.json";
-        var pickupTime = $("input[type=time]#pickupTime").val();
-        var pickupDate = new Date($("input[type=date]#pickupDate").val());
-        var numHours = $("#numHours").val();
+        let target = $(".availableDogs");
+        let jsonSource = "../src/animals.json";
+        let pickupTime = $("input[type=time]#pickupTime").val();
+        let pickupDate = new Date($("input[type=date]#pickupDate").val());
+        let numHours = $("#numHours").val();
 
         window.sessionStorage.setItem("time", pickupTime +","+pickupDate.getDate()+"/"+pickupDate.getMonth()+'/'+pickupDate.getFullYear());
         window.sessionStorage.setItem("hours", numHours);
@@ -29,8 +33,8 @@ var Dogs = (function(){
     }
 
     function insertDog(data, target){
-        var dogs, i, dog, undefinedError;
-        var imageName;
+        let dogs, i, dog, undefinedError;
+        let imageName;
 
 
         console.log($("input[type=time]#pickupTime").val());
@@ -47,16 +51,15 @@ var Dogs = (function(){
                 dog = dogs[i];
 
                 //Check if the dog object keys exist in the structure of json
-                var dogKeys = ["dogName", "dogId", "dogSize", "description", "pricePerHour"];
-                if (dogKeys.every(i => Object.keys(dog).includes(i))) {
+                if (dog.dogName && dog.dogId && dog.dogSize && dog.description && dog.pricePerHour) {
 
                     //generate image source
                     imageName = dog.dogSize.toLowerCase();
 
-                    var dogDiv = document.createElement('div');
-                    var dogInfoDiv = document.createElement('div');
+                    let dogDiv = document.createElement('div');
+                    let dogInfoDiv = document.createElement('div');
                     $(dogDiv).addClass("dogs");
-                    $(dogInfoDiv).addClass("dogInfo")
+                    $(dogInfoDiv).addClass("dogInfo");
 
                     //Create image from image source
                     $(dogDiv).append("<img src='../images/" + imageName + ".jpg' alt='" + dog.dogType + "'>");

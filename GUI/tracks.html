@@ -18,7 +18,7 @@
                     <label for="loginUser">Username: </label>
                     <input type="text" name="loginUser" id="loginUser"><br>
                     <label for="loginPassword">Password: </label>
-                    <input type="text" for="loginPassword" id="loginPassword"><br>
+                    <input type="text" name="loginPassword" id="loginPassword"><br>
                     <input type="submit" id="loginSubmit" value="Login"><br>
                     <a href="admin.html">
                         <input type="button" id="loginAdmin" value="Login as Admin">
@@ -47,7 +47,8 @@
                 <p class="location"> Car Rental Office
                 <i> - campsite</i>
                 <input type="button" class="showOnMap" value="Show on map">
-                <input type="checkbox" class="showHide" name="checkbox" checked></p>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                    <input type="checkbox" class="showHide" name="checkbox" checked></p>
             </li>
         </ul>
     </main>

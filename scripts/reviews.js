@@ -1,10 +1,14 @@
-var Reviews = (function (){
-    var pub ={};
+/*global $, console, alert */
+// noinspection JSUnresolvedVariable
+
+let Reviews = (function (){
+    "use strict";
+    let pub ={};
 
     function getReviews(){
         console.log("Get Reviews called");
-        var target = $(".reviews")
-        var jsonSource = "../reviews/reviews.json";
+        let target = $(".reviews");
+        let jsonSource = "../reviews/reviews.json";
 
 
         $.ajax({
@@ -21,11 +25,10 @@ var Reviews = (function (){
     }
 
     function loadReviews(data, target) {
-        var reviewKeys = ["title", "author", "reviewcontent"];
         console.log("OK");
         $.each(data, function (key, review){
-            if(reviewKeys.every(i => Object.keys(review).includes(i))){
-                var reviewDiv = document.createElement('div');
+            if(review.title && review.author && review.reviewcontent){
+                let reviewDiv = document.createElement('div');
                 $(reviewDiv).addClass("review");
                 $(reviewDiv).append("<h3>"+review.title+"</h3>");
                 $(reviewDiv).append("<i>" +review.author+ "</i>");

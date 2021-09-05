@@ -1,10 +1,13 @@
-var AdminView = (function (){
-    var pub={};
+/*global $, console, alert */
+// noinspection JSUnusedLocalSymbols,JSUnresolvedVariable
+
+let AdminView = (function (){
+    "use strict";
+    let pub={};
 
     function getBooking(e){
         console.log("Get Bookings called");
-        var target = $(".reviews")
-        var jsonSource = "../src/bookings.json";
+        let jsonSource = "../src/bookings.json";
 
 
         $.ajax({
@@ -12,7 +15,7 @@ var AdminView = (function (){
             url: jsonSource,
             cache: false,
             success: function(data) {
-                loadBookings(data, target);
+                loadBookings(data);
             },
             error: function() {
                 alert("Can't connect to the json");
@@ -20,9 +23,9 @@ var AdminView = (function (){
         });
     }
 
-    function loadBookings(data, target){
-        var bookingCollection = [];
-        var bookingTable = $(".bookings tbody");
+    function loadBookings(data){
+        let bookingCollection = [];
+        let bookingTable = $(".bookings tbody");
 
         if(data.bookings && data.bookings.booking){
             bookingCollection = data.bookings.booking;

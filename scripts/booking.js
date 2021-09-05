@@ -1,14 +1,20 @@
-var Booking = (function (){
-   var pub = {};
+/*global alert, console, confirm, $ */
+// noinspection JSJQueryEfficiency,JSUnusedLocalSymbols
+
+let Booking = (function (){
+   "use strict";
+   let pub = {};
 
    function addBooking(e){
-      var selectedDog = $(e.target).closest(".dogInfo").find(".dogId");
-      var currentBooking = JSON.parse(window.sessionStorage.getItem("currentBooking"));
-      var items = [];
+      let selectedDog = $(e.target).closest(".dogInfo").find(".dogId");
+      let currentBooking = JSON.parse(window.sessionStorage.getItem("currentBooking"));
+      let items = [];
 
       if(currentBooking !== null){
          if(Array.isArray(currentBooking)){
-            items.push(...currentBooking);
+            currentBooking.forEach(function (current) {
+               items.push(current);
+            });
          } else {
             items.push(currentBooking);
          }
@@ -37,7 +43,7 @@ var Booking = (function (){
           "<p>Items: </p>"
       );
 
-      var itemsDiv = document.createElement('div');
+      let itemsDiv = document.createElement('div');
       $(itemsDiv).addClass("items");
 
       loadItems(itemsDiv);
@@ -47,7 +53,7 @@ var Booking = (function (){
 
    function loadItems(itemsDiv){
 
-      var items = JSON.parse(window.sessionStorage.getItem("currentBooking"));
+      let items = JSON.parse(window.sessionStorage.getItem("currentBooking"));
       $(itemsDiv).empty();
       if(Array.isArray(items)){
          items.forEach(function(item){
@@ -60,8 +66,8 @@ var Booking = (function (){
 
    function removeBooking(e){
 
-      var index = $(this).parent().index();
-      var items = JSON.parse(window.sessionStorage.getItem("currentBooking"));
+      let index = $(e.target).parent().index();
+      let items = JSON.parse(window.sessionStorage.getItem("currentBooking"));
 
       items.splice(index,1);
       window.sessionStorage.setItem("currentBooking", JSON.stringify(items));
@@ -87,14 +93,14 @@ var Booking = (function (){
       if(confirm("Are you sure you want to move to a new page? \n The current booking won't be saved")) {
          $("form#pickupSelect *").attr('disabled', false);
          window.sessionStorage.clear();
-         window.location.href = $(this).attr("href");
+         window.location.href = $(e.target).attr("href");
       } else {
          console.log("uh");
       }
    }
 
    pub.saveBooking= function (e){
-      var booking;
+      let booking;
       if($("bookingNameError").html()!== ""){
          booking = {
             items:  JSON.parse(window.sessionStorage.getItem("currentBooking")),
@@ -114,7 +120,7 @@ var Booking = (function (){
          }
 
       }
-   }
+   };
 
    pub.setup = function (){
       $("#pickupSelect").submit(viewBooking);
@@ -124,7 +130,7 @@ var Booking = (function (){
       $("#newBooking").click(newBooking);
       $("nav a").click(redirectPrevention);
       $("#loginForm a").click(redirectPrevention);
-   }
+   };
 
    return pub;
 }());

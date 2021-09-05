@@ -1,11 +1,15 @@
-var Map = (function() {
-    var pub ={};
-    var map;
-    var dataPoint;
+// noinspection JSUnusedLocalSymbols,HttpUrlsUsage
+/* global $, L, alert, console */
+
+let InteractiveMap = (function() {
+    "use strict";
+    let pub ={};
+    let map;
+    let dataPoint;
 
     /* connect and open the geojson file */
     function getCoordinates(){
-        var jsonSource = "../src/POI.geojson";
+        let jsonSource = "../src/POI.geojson";
 
         $.ajax({
             type: "GET",
@@ -22,9 +26,10 @@ var Map = (function() {
 
     /* Load the data entry from the geojson file into map*/
     function loadPOI(data){
-        var i;
+        let i;
 
         dataPoint=[];
+        // noinspection JSJQueryEfficiency
         $("#pointsOfInterest").empty();
 
         //Look for the key in the file
@@ -36,8 +41,8 @@ var Map = (function() {
             for (i = 0; i < data.features.length; i++){
                 //Append the markers onto the map
                 dataPoint[i] = L.geoJSON(data.features[i]).addTo(map);
-                dataPoint[i].bindPopup("<h3>"+data.features[i].properties.name+"</h3>"
-                    +"<p>"+data.features[i].properties.type+"</p>");
+                dataPoint[i].bindPopup("<h3>"+data.features[i].properties.name+"</h3>"+
+                    "<p>"+data.features[i].properties.type+"</p>");
 
                 //Append location and its html elements onto the list
                 $("#pointsOfInterest").append("<li><p class=\"location\">" + data.features[i].properties.name +
@@ -52,8 +57,8 @@ var Map = (function() {
 
     /* Show or hide the marker using the checkbox */
     function showHideMarker(e){
-        var index = $(this).parent().parent().index();
-            if($(this).is(':checked')){
+        let index = $(e.target).parent().parent().index();
+            if($(e.target).is(':checked')){
                 map.addLayer(dataPoint[index]);
             } else {
                 map.removeLayer(dataPoint[index]);
@@ -69,7 +74,7 @@ var Map = (function() {
 
     /* Focus on the marker selected on the map */
     function centreMap(e){
-        var index = $(this).parent().parent().index();
+        let index = $(e.target).parent().parent().index();
 
         map.flyTo(dataPoint[index].getBounds().getCenter(),15);
     }
@@ -90,11 +95,14 @@ var Map = (function() {
         //Calling this function is for developmental purpose only, comment out of final product
         //map.on('click',onMapClick);
 
+
+        // noinspection JSJQueryEfficiency
         $("#pointsOfInterest").on("change",".showHide",showHideMarker);
+        // noinspection JSJQueryEfficiency
         $("#pointsOfInterest").on("click",".showOnMap",centreMap);
     };
 
     return pub;
 }());
 
-$(document).ready(Map.setup);
+$(document).ready(InteractiveMap.setup);
