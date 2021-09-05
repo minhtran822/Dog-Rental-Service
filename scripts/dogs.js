@@ -1,10 +1,22 @@
 /*global console, $, alert*/
 // noinspection JSUnresolvedVariable
 
+/**
+ * Dog module to show all the dog options
+ *
+ * Created by: Minh Tran, 04/09/2021
+ */
+
 let Dogs = (function(){
     "use strict";
     let pub = {};
 
+    /**
+     * Establish a connection to the animals.json files
+     * Store all the pick up filtering details.
+     *
+     * @param e The event representing the button clicked
+     */
     function getDogs(e) {
         e.preventDefault();
         console.log("Get Dogs called");
@@ -14,6 +26,8 @@ let Dogs = (function(){
         let pickupDate = new Date($("input[type=date]#pickupDate").val());
         let numHours = $("#numHours").val();
 
+        //Store the booking details used for filtering
+        //This will be updated everytime the booking details changed
         window.sessionStorage.setItem("time", pickupTime +","+pickupDate.getDate()+"/"+pickupDate.getMonth()+'/'+pickupDate.getFullYear());
         window.sessionStorage.setItem("hours", numHours);
 
@@ -32,12 +46,17 @@ let Dogs = (function(){
         $("form#pickupSelect *").attr('disabled', true);
     }
 
+    /**
+     * Load the data read from file onto the target variable.
+     *
+     * @param data The data read from file to be loaded.
+     * @param target The target container in html file to display all the data
+     */
     function insertDog(data, target){
         let dogs, i, dog, undefinedError;
         let imageName;
 
-
-        console.log($("input[type=time]#pickupTime").val());
+        //console.log($("input[type=time]#pickupTime").val());
         undefinedError = false;
 
         //Reset the dogs area
@@ -96,7 +115,6 @@ let Dogs = (function(){
 
     pub.setup = function (){
         $("#pickupSelect").submit(getDogs);
-        /*$(".availableDogs").on("click", ".viewDog", viewADog);*/
     };
 
     return pub;

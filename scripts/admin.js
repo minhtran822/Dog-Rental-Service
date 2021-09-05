@@ -1,10 +1,22 @@
 /*global $, console, alert */
 // noinspection JSUnusedLocalSymbols,JSUnresolvedVariable
 
+/**
+ * Admin module to show administrative view
+ * Currently as required, it is only showing existing bookings
+ *
+ * Created by: Minh Tran, 04/09/2021
+ */
+
 let AdminView = (function (){
     "use strict";
     let pub={};
 
+    /**
+     * Establish a connection to the booking.json files
+     *
+     * @param e The event representing the loading
+     */
     function getBooking(e){
         console.log("Get Bookings called");
         let jsonSource = "../src/bookings.json";
@@ -23,6 +35,12 @@ let AdminView = (function (){
         });
     }
 
+    /**
+     * Load all the files in the data onto the admin page
+     * Append the data into a table.
+     *
+     * @param data The data read from connected file
+     */
     function loadBookings(data){
         let bookingCollection = [];
         let bookingTable = $(".bookings tbody");
@@ -44,6 +62,7 @@ let AdminView = (function (){
                     );
 
                 } else {
+                    //If the json file have wrong structure and not enough required keys
                     alert("Wrong structure");
                 }
             });

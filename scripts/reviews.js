@@ -1,10 +1,18 @@
 /*global $, console, alert */
 // noinspection JSUnresolvedVariable
 
+/**
+ * Review module to show all the reviews from files
+ *
+ * Created by: Minh Tran, 04/09/2021
+ */
 let Reviews = (function (){
     "use strict";
     let pub ={};
 
+    /**
+     * Establish a connection to the reviews.json files.
+     */
     function getReviews(){
         console.log("Get Reviews called");
         let target = $(".reviews");
@@ -24,6 +32,12 @@ let Reviews = (function (){
         });
     }
 
+    /**
+     * Load the data read from file onto the target variable.
+     *
+     * @param data The data read from file to be loaded.
+     * @param target The target container in html file to display all the data
+     */
     function loadReviews(data, target) {
         console.log("OK");
         $.each(data, function (key, review){

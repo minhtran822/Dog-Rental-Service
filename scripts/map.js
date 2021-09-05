@@ -1,13 +1,22 @@
 // noinspection JSUnusedLocalSymbols,HttpUrlsUsage
 /* global $, L, alert, console */
 
+/**
+ * Map module create an interactive map
+ * Allowing loading map data from file, show/hide map data and focus on a data point
+ *
+ * Created by: Minh Tran, 04/09/2021
+ */
+
 let InteractiveMap = (function() {
     "use strict";
     let pub ={};
     let map;
     let dataPoint;
 
-    /* connect and open the geojson file */
+    /**
+     * Establish a connection to the geojson files.
+     */
     function getCoordinates(){
         let jsonSource = "../src/POI.geojson";
 
@@ -24,7 +33,10 @@ let InteractiveMap = (function() {
         });
     }
 
-    /* Load the data entry from the geojson file into map*/
+    /** Load the data entry from the geojson file into map
+     *
+     * @param data The data from the geojson
+     */
     function loadPOI(data){
         let i;
 
@@ -55,7 +67,10 @@ let InteractiveMap = (function() {
         }
     }
 
-    /* Show or hide the marker using the checkbox */
+    /** Show or hide the marker using the checkbox
+     *
+     * @param e The event representing the checkbox change
+     */
     function showHideMarker(e){
         let index = $(e.target).parent().parent().index();
             if($(e.target).is(':checked')){
@@ -65,14 +80,19 @@ let InteractiveMap = (function() {
             }
     }
 
-    /* Output the coordinate of the point clicked in the map
-    Mainly for finding out coordinate
+    /** Output the coordinate of the point clicked in the map
+     * Mainly for finding out coordinate in developmental process
+     *
+     * @param e The event representing the mouse click
     */
     function onMapClick(e){
         console.log(e.latlng);
     }
 
-    /* Focus on the marker selected on the map */
+    /** Focus on the marker selected on the map
+     *
+     * @param e The event representing the button click
+     */
     function centreMap(e){
         let index = $(e.target).parent().parent().index();
 
