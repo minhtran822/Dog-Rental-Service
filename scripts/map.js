@@ -75,8 +75,10 @@ let InteractiveMap = (function() {
         let index = $(e.target).parent().parent().index();
             if($(e.target).is(':checked')){
                 map.addLayer(dataPoint[index]);
+                $(e.target).parent().find(".showOnMap").attr('disabled', false);
             } else {
                 map.removeLayer(dataPoint[index]);
+                $(e.target).parent().find(".showOnMap").attr('disabled', true);
             }
     }
 
