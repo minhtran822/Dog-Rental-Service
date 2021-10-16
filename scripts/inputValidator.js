@@ -42,7 +42,7 @@ let InputValidator = (function (){
     function checkLength(textValue, minLength, maxLength) {
         let length = textValue.length;
         if (maxLength === undefined) {
-            maxLength = minLength;
+            maxLength = length+1;
         }
         return (length >= minLength && length <= maxLength);
     }

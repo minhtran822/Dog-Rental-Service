@@ -34,9 +34,9 @@ let Booking = (function (){
       //Prevent more than 3 dogs selected
       if(items.length < 3){
          //Prevent selecting the dog twice in a booking
-         if(!items.includes(JSON.stringify($(selectedDog).html()))){
+         if(!items.includes(($(selectedDog).html()))){
 
-            items.push(JSON.stringify($(selectedDog).html()));
+            items.push(($(selectedDog).html()));
          } else {
             alert("You have selected this dog");
          }
