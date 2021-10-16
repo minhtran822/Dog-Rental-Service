@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5a7acacb-7229-46e3-a8bb-98387a27e181" name="Sapphire" url="https://localhost:8888/~mtrn/assignments">
+        <fileTransfer rootFolder="/devel/mtrn/projects/assignments" accessType="SFTP" host="localhost" port="2222" sshConfigId="51e05e7e-9ed0-4d7a-bfdb-98601551c8e1" sshConfig="mtrn@localhost:2222 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

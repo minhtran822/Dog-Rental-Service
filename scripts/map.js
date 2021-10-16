@@ -18,7 +18,7 @@ let InteractiveMap = (function() {
      * Establish a connection to the geojson files.
      */
     function getCoordinates(){
-        let jsonSource = "../src/POI.geojson";
+        let jsonSource = "src/POI.geojson";
 
         $.ajax({
             type: "GET",
@@ -37,13 +37,14 @@ let InteractiveMap = (function() {
      *
      * @param data The data from the geojson
      */
-    function loadPOI(data){
+    function loadPOI(dataJS){
         let i;
 
         dataPoint=[];
         // noinspection JSJQueryEfficiency
         $("#pointsOfInterest").empty();
 
+        let data = JSON.parse(dataJS);
         //Look for the key in the file
         if(data.features){
             /* Going through all the location stored

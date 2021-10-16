@@ -16,7 +16,7 @@ let Reviews = (function (){
     function getReviews(){
         console.log("Get Reviews called");
         let target = $(".reviews");
-        let jsonSource = "../reviews/reviews.json";
+        let jsonSource = "reviews/reviews.json";
 
 
         $.ajax({

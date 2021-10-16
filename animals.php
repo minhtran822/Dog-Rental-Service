@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>View Dogs</title>
     <link rel="stylesheet" href="stylesheet.css">
-    <script src="../helpers/jQuery/jquery-3.6.0.min.js"></script>
+    <script src="helpers/jQuery/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -26,9 +26,9 @@
 
     <nav id="sidebar">
         <ul>
-            <li><a href="index.html">Home</a>
+            <li><a href="index.php">Home</a>
             <li class="current">View Dogs
-            <li><a href="tracks.html">Points of Interest</a></li>
+            <li><a href="tracks.php">Points of Interest</a></li>
         </ul>
     </nav>
     <main>
@@ -62,7 +62,7 @@
         </form>
         <div class="availableDogs">
             <div class="dogs">
-                <img src="../images/small.jpg" alt="Poodle">
+                <img src="images/small.jpg" alt="Poodle">
                 <div class="dogInfo">
                     <h3>Fido</h3>
                     <p>ID: <span class="dogId">DW-001</span></p>
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="dogs">
-                <img src="../images/medium.jpg" alt="Springer Spanial">
+                <img src="images/medium.jpg" alt="Springer Spanial">
                 <div class="dogInfo">
                     <h3>Rover</h3>
                     <p>ID: <span class="dogId">DW-002</span></p>
@@ -88,7 +88,7 @@
                 </div>
             </div>
             <div class="dogs">
-                <img src="../images/large.jpg" alt="Retreiver">
+                <img src="images/large.jpg" alt="Retreiver">
                 <div class="dogInfo">
                     <h3>Rex</h3>
                     <p>ID: <span class="dogId">DW-003</span></p>
@@ -101,7 +101,7 @@
                 </div>
             </div>
             <div class="dogs">
-                <img src="../images/huge.jpg" alt="St. Bernard">
+                <img src="images/huge.jpg" alt="St. Bernard">
                 <div class="dogInfo">
                     <h3>Digby</h3>
                     <p>ID: <span class="dogId">DW-004</span></p>
@@ -121,9 +121,9 @@
     </footer>
 
 
-    <script src="../scripts/dogs.js"></script>
-    <script src="../scripts/booking.js"></script>
-    <script src="../scripts/inputValidator.js"></script>
+    <script src="scripts/dogs.js"></script>
+    <script src="scripts/booking.js"></script>
+    <script src="scripts/inputValidator.js"></script>
 
 </body>
 </html>

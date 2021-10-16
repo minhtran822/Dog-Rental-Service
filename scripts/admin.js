@@ -19,7 +19,7 @@ let AdminView = (function (){
      */
     function getBooking(e){
         console.log("Get Bookings called");
-        let jsonSource = "../src/bookings.json";
+        let jsonSource = "src/bookings.json";
 
 
         $.ajax({

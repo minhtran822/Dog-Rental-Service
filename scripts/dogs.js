@@ -21,7 +21,7 @@ let Dogs = (function(){
         e.preventDefault();
         console.log("Get Dogs called");
         let target = $(".availableDogs");
-        let jsonSource = "../src/animals.json";
+        let jsonSource = "src/animals.json";
         let pickupTime = $("input[type=time]#pickupTime").val();
         let pickupDate = new Date($("input[type=date]#pickupDate").val());
         let numHours = $("#numHours").val();
@@ -81,7 +81,7 @@ let Dogs = (function(){
                     $(dogInfoDiv).addClass("dogInfo");
 
                     //Create image from image source
-                    $(dogDiv).append("<img src='../images/" + imageName + ".jpg' alt='" + dog.dogType + "'>");
+                    $(dogDiv).append("<img src='images/" + imageName + ".jpg' alt='" + dog.dogType + "'>");
 
                     //Create div dog info
                     $(dogInfoDiv).append("<h3>" + dog.dogName + "</h3>");
