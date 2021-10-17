@@ -1,3 +1,7 @@
+<?php
+session_start();
+include ('functions/validationFunctions.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +36,7 @@
         </ul>
     </nav>
     <main>
-        <form id="pickupSelect">
+        <form id="pickupSelect" novalidate>
             <label for="pickupDate">Date: </label>
             <input type="date" id="pickupDate" name="pickupDate"
                    value="2021-07-22"
@@ -45,15 +49,15 @@
             <small> Office hours are between 9:00 and 16:00</small>
             <br>
             <label for="numHours">Number of Hours: </label>
-            <input type="text" id="numHours" required>
+            <input type="text" id="numHours" name="numHours" required>
             <small id="numHoursError">Please put in number of hours.</small>
             <br>
             <input type="submit" id="applyPickup" value="See Available dogs">
         </form>
         <div id="bookingDetails"></div>
-        <form id="bookingInfo">
+        <form id="bookingInfo" action="functions/validateCheckOut.php" method="post" novalidate>
             <label for="bookingName">Name: </label>
-            <input type="text" id="bookingName" required>
+            <input type="text" id="bookingName" name="bookingName"required>
             <small id="bookingNameError"></small>
             <br>
             <input type="submit" id="bookingSave" value="Save">
@@ -124,6 +128,7 @@
     <script src="scripts/dogs.js"></script>
     <script src="scripts/booking.js"></script>
     <script src="scripts/inputValidator.js"></script>
+
 
 </body>
 </html>

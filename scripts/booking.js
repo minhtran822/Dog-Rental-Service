@@ -160,7 +160,7 @@ let Booking = (function (){
             window.sessionStorage.clear();
             window.localStorage.setItem("booking", JSON.stringify(booking));
             alert("Booking saved");
-            window.location.reload();
+            //window.location.reload();
          }
 
       }
