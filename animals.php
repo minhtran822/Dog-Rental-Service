@@ -36,11 +36,11 @@ include ('functions/validationFunctions.php');
         </ul>
     </nav>
     <main>
-        <form id="pickupSelect" novalidate>
+        <form id="pickupSelect" action="functions/validatePickUp.php" method="post" novalidate>
             <label for="pickupDate">Date: </label>
             <input type="date" id="pickupDate" name="pickupDate"
-                   value="2021-07-22"
-                   min="2021-01-01" max="2022-12-31" required>
+                   value="<?php echo date('Y-m-d'); ?>"
+                   min="2021-01-01" max="2022-12-31" required />
             <br>
             <label for="pickupTime">Time:</label>
             <input type="time" id="pickupTime" name="pickupTime"
@@ -52,7 +52,7 @@ include ('functions/validationFunctions.php');
             <input type="text" id="numHours" name="numHours" required>
             <small id="numHoursError">Please put in number of hours.</small>
             <br>
-            <input type="submit" id="applyPickup" value="See Available dogs">
+            <input type="submit" id="applyPickup" name="applyPickup" value="See Available dogs">
         </form>
         <div id="bookingDetails"></div>
         <form id="bookingInfo" action="functions/validateCheckOut.php" method="post" novalidate>

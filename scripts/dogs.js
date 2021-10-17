@@ -24,11 +24,11 @@ let Dogs = (function(){
         let jsonSource = "src/animals.json";
         let pickupTime = $("input[type=time]#pickupTime").val();
         let pickupDate = new Date($("input[type=date]#pickupDate").val());
-        let numHours = $("#numHours").val();
+        let numHours = $("#numHours")   .val();
 
         //Store the booking details used for filtering
         //This will be updated everytime the booking details changed
-        window.sessionStorage.setItem("time", pickupTime +","+pickupDate.getDate()+"/"+pickupDate.getMonth()+'/'+pickupDate.getFullYear());
+        window.sessionStorage.setItem("time", pickupTime +","+pickupDate.getDate()+"/"+(pickupDate.getMonth()+1)+'/'+pickupDate.getFullYear());
         window.sessionStorage.setItem("hours", numHours);
 
         $.ajax({
@@ -43,7 +43,13 @@ let Dogs = (function(){
             }
         });
 
-        $("form#pickupSelect *").attr('disabled', true);
+        //$("form#pickupSelect *").attr('disabled', true);
+        //return true;
+        let action = $(e.currentTarget).attr('action');
+        let data = $(e.currentTarget).serialize();
+        $.post(action, data, function(response) {
+            alert(response);
+        });
     }
 
     /**

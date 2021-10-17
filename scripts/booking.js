@@ -161,6 +161,12 @@ let Booking = (function (){
             window.localStorage.setItem("booking", JSON.stringify(booking));
             alert("Booking saved");
             //window.location.reload();
+
+            let action = $(e.currentTarget).attr('action');
+            let data = $(e.currentTarget).serialize();
+            $.post(action, data, function(response) {
+               alert(response);
+            });
          }
 
       }

@@ -94,11 +94,13 @@ let InputValidator = (function (){
      * @param e The event representing the button clicked
      */
     function readyToSave(e){
-        e.preventDefault();
         if(checkBookingName()) {
             //Call to Bookings module to save the file
             Booking.saveBooking(e);
+        } else {
+            e.preventDefault();
         }
+        //return true;
     }
 
     pub.setup=function (){
