@@ -19,7 +19,7 @@ function addHeader(){
                     <label for=\"loginUser\">Username: </label>
                     <input type=\"text\" name=\"loginUser\" id=\"loginUser\"><br>
                     <label for=\"loginPassword\">Password: </label>
-                    <input type=\"text\" name=\"loginPassword\" id=\"loginPassword\"><br>
+                    <input type=\"password\" name=\"loginPassword\" id=\"loginPassword\"><br>
                     <input type=\"submit\" id=\"loginSubmit\" value=\"Login\"><br>";
 
         if(isset($_SESSION['errorLogin'])){

@@ -25,7 +25,7 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
         <?php addNavBar();?>
     </nav>
     <main>
-        <form id="pickupSelect" action="validatePickUp.php" method="post" novalidate>
+        <form id="pickupSelect" action="validatePickUp.php" method="post">
             <label for="pickupDate">Date: </label>
             <input type="date" id="pickupDate" name="pickupDate"
                    value="<?php echo date('Y-m-d'); ?>"
@@ -49,7 +49,7 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
             <input type="submit" id="applyPickup" name="applyPickup" value="See Available dogs">
         </form>
         <div id="bookingDetails"></div>
-        <form id="bookingInfo" action="validateCheckOut.php" method="post" novalidate>
+        <form id="bookingInfo" action="validateCheckOut.php" method="post">
             <label for="bookingName">Name: </label>
             <input type="text" id="bookingName" name="bookingName" <?php
                 if (isset($_SESSION['bookingName'])) {
