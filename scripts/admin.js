@@ -70,8 +70,21 @@ let AdminView = (function (){
         }
     }
 
+    function removeBooking(e){
+        let selectedBooking = $(e.target).closest("tr").index();
+
+        let action = 'processBookingRemove.php';
+        let data = { "indexBooking": selectedBooking};
+
+        $.post(action, data, function(response) {
+            console.log(response);
+            window.location.reload();
+        });
+    }
+
     pub.setup = function (){
         getBooking();
+        $(".bookings").on("click", ".cancelBooking", removeBooking);
     };
 
     return pub;
