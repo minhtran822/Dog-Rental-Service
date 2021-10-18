@@ -31,11 +31,11 @@ $json_object = json_decode($json_input);
 $json_object->bookings->booking[] =  $val;
 //print_r($json_object->bookings->booking);
 $json_output = json_encode($json_object,JSON_PRETTY_PRINT)."\n";
-file_put_contents('src/newBooking.json',$json_output);
 
-/*
-$json = json_decode($json_input,true);
-$json_output = json_encode($json,JSON_PRETTY_PRINT)."\n";
-file_put_contents($output_filename,$json_output);
-*/
+if(file_put_contents('src/newBooking.json',$json_output)){
+    echo "JSON file created successfullly";
+} else {
+    print_r(error_get_last(), true);
+}
+
 ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require ('functions/dbconnect.php');
+require ('dbconnect.php');
 
 $inName = htmlentities($_POST['loginUser']);
 $inPassword = htmlentities($_POST['loginPassword']);

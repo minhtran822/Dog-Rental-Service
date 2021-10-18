@@ -16,7 +16,7 @@ var GetBookingContent = (function(){
                 window.localStorage.clear();
             },
             error: function(data){
-                alert("Ajax Failed");
+                console.log("Ajax failed");
             }
         });
 
