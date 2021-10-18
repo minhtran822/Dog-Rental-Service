@@ -115,7 +115,7 @@ let Booking = (function (){
       if(confirm("Are you sure you want to delete current booking and make a new one?")) {
          $("form#pickupSelect *").attr('disabled', false);
          window.sessionStorage.clear();
-         window.location.reload();
+         window.location.href="newBooking.php";
       } else {
          console.log("uh");
       }
