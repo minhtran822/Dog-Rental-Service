@@ -79,9 +79,39 @@ nav li{
     color: antiquewhite;
 }
 
+li.subNav{
+    background-color: papayawhip;
+    color: black;
+}
+
+li.subNav a{
+     color: black;
+ }
+
 nav a{
     text-decoration: none;
     color: bisque;
+}
+
+/** Admin nav **/
+#navAdmin ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+#navAdmin li {
+    display: inline-block;
+    width: 100px;
+    margin: 0 10px 0 0;
+}
+
+#navAdmin li * {
+    display: block;
+}
+
+#navAdmin {
+    text-align: right;
+    margin-top: 10px;
 }
 
 
@@ -185,8 +215,23 @@ th, td{
     padding: 2px 5px;
 }
 
+
+
+td{
+    font-size: 12px;
+}
+
 tbody tr :nth-child(4){
     text-align: center;
+}
+
+#editDogDiv label{
+    display: inline-block;
+    width: 90px;
+}
+
+.readonly {
+    background-color: #bbbbbb;
 }
 
 /* adjust for smaller screen */

@@ -41,7 +41,7 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
         </thead>
         <tbody class="dogTable"></tbody>
     </table>
-    <form id="editDogDiv" action="processDogEdit.php" method="post">
+    <form id="editDogDiv" action="validateDogEdit.php" method="post">
         <h2>Dog Details</h2>
         <label for="dogId">ID: </label>
         <input type="text" id="dogId" name="dogId" required />
