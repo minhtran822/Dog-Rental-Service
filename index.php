@@ -12,7 +12,6 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
 </head>
 <body>
     <header>
-        <h1> Dog Rental Service</h1>
         <?php
             include ('functions/header.php');
             addHeader();
