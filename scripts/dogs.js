@@ -18,23 +18,9 @@ let Dogs = (function(){
      * @param e The event representing the button clicked
      */
     function getDogs(e) {
-        e.preventDefault();
         console.log("Get Dogs called");
         let target = $(".availableDogs");
         let jsonSource = "src/animals.json";
-        let pickupTime = $("input[type=time]#pickupTime").val();
-        let pickupDate = new Date($("input[type=date]#pickupDate").val());
-        let numHours = $("#numHours")   .val();
-
-        //Store the booking details used for filtering
-        //This will be updated everytime the booking details changed
-        window.sessionStorage.setItem("pickup", pickupTime +","+pickupDate.getDate()+"/"+(pickupDate.getMonth()+1)+'/'+pickupDate.getFullYear());
-        window.sessionStorage.setItem("hours", numHours);
-        window.sessionStorage.setItem("time", pickupTime);
-        window.sessionStorage.setItem("date", ""+pickupDate.getDate());
-        window.sessionStorage.setItem("month", ""+(pickupDate.getMonth()+1));
-        window.sessionStorage.setItem("year", ""+pickupDate.getFullYear());
-
         $.ajax({
             type: "GET",
             url: jsonSource,
@@ -45,14 +31,6 @@ let Dogs = (function(){
             error: function() {
                 alert("Can't connect to the json");
             }
-        });
-
-        //$("form#pickupSelect *").attr('disabled', true);
-        //return true;
-        let action = $(e.currentTarget).attr('action');
-        let data = $(e.currentTarget).serialize();
-        $.post(action, data, function(response) {
-            console.log(response);
         });
     }
 
@@ -123,8 +101,36 @@ let Dogs = (function(){
 
     }
 
+    function pickupFilter(e){
+
+        e.preventDefault();
+        let pickupTime = $("input[type=time]#pickupTime").val();
+        let pickupDate = new Date($("input[type=date]#pickupDate").val());
+        let numHours = $("#numHours")   .val();
+
+        //Store the booking details used for filtering
+        //This will be updated everytime the booking details changed
+        window.sessionStorage.setItem("pickup", pickupTime +","+pickupDate.getDate()+"/"+(pickupDate.getMonth()+1)+'/'+pickupDate.getFullYear());
+        window.sessionStorage.setItem("hours", numHours);
+        window.sessionStorage.setItem("time", pickupTime);
+        window.sessionStorage.setItem("date", ""+pickupDate.getDate());
+        window.sessionStorage.setItem("month", ""+(pickupDate.getMonth()+1));
+        window.sessionStorage.setItem("year", ""+pickupDate.getFullYear());
+
+        getDogs(e);
+
+        $("form#pickupSelect *").attr('disabled', true);
+        //return true;
+        let action = $(e.currentTarget).attr('action');
+        let data = $(e.currentTarget).serialize();
+        $.post(action, data, function(response) {
+            console.log(response);
+        });
+    }
+
+
     pub.setup = function (){
-        $("#pickupSelect").submit(getDogs);
+        $("#pickupSelect").submit(pickupFilter);
     };
 
     return pub;
