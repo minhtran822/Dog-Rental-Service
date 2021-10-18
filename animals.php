@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ('functions/validationFunctions.php');
+$_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,29 +11,16 @@ include ('functions/validationFunctions.php');
     <script src="helpers/jQuery/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1> Dog Rental Service</h1>
-        <div id="user">
-            <div id="login">
-                <form id="loginForm">
-                    <label for="loginUser">Username: </label>
-                    <input type="text" name="loginUser" id="loginUser"><br>
-                    <label for="loginPassword">Password: </label>
-                    <input type="text" name="loginPassword" id="loginPassword"><br>
-                    <input type="submit" id="loginSubmit" value="Login"><br>
-                    <input type="button" id="loginAdmin" value="Login as Admin" onclick="location.href='admin.html'">
-                </form>
-            </div>
-        </div>
 
+    <header>
+        <?php
+        include ('functions/header.php');
+        addHeader();
+        ?>
     </header>
 
     <nav id="sidebar">
-        <ul>
-            <li><a href="index.php">Home</a>
-            <li class="current">View Dogs
-            <li><a href="tracks.php">Points of Interest</a></li>
-        </ul>
+        <?php addNavBar();?>
     </nav>
     <main>
         <form id="pickupSelect" action="validatePickUp.php" method="post" novalidate>

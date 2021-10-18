@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,29 +14,16 @@
     <script src="scripts/map.js"></script>
 </head>
 <body>
-    <header>
-        <h1> Dog Rental Service</h1>
-        <div id="user">
-            <div id="login">
-                <form id="loginForm">
-                    <label for="loginUser">Username: </label>
-                    <input type="text" name="loginUser" id="loginUser"><br>
-                    <label for="loginPassword">Password: </label>
-                    <input type="text" name="loginPassword" id="loginPassword"><br>
-                    <input type="submit" id="loginSubmit" value="Login"><br>
-                    <input type="button" id="loginAdmin" value="Login as Admin" onclick="location.href='admin.php'">
-                </form>
-            </div>
-        </div>
 
+    <header>
+        <?php
+        include ('functions/header.php');
+        addHeader();
+        ?>
     </header>
 
     <nav id="sidebar">
-        <ul>
-            <li><a href="index.php">Home</a>
-            <li><a href="animals.php">View Dogs</a>
-            <li class="current">Points of Interest</li>
-        </ul>
+        <?php addNavBar();?>
     </nav>
 
     <main>
