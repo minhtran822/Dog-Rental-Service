@@ -14,6 +14,8 @@ var GetBookingContent = (function(){
             success: function(data) {
                 console.log(data);
                 window.localStorage.clear();
+                window.sessionStorage.clear();
+                window.location.href="newBooking.php";
             },
             error: function(data){
                 console.log("Ajax failed");
