@@ -22,6 +22,3 @@ include("functions/header.php");
         ?>
     </main>
 
-    </body>
-    </html>
-
