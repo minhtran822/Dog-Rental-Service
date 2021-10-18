@@ -58,10 +58,22 @@ function addNavBar(){
         }
 
         if (isset($_SESSION['username'])) {
-            if ($_SESSION['currentWindow'] === 'admin.php') {
+            if ($_SESSION['currentWindow'] === 'adminBooking.php' ||
+                $_SESSION['currentWindow'] === "adminDog.php") {
                 echo "<li class='admin current'>Admins";
+                if ($_SESSION['currentWindow'] === 'adminBooking.php') {
+                    echo "<li class='subNav current'>Bookings";
+                } else {
+                    echo "<li class='subNav'><a href='adminBooking.php'>Bookings</a>";
+                }
+
+                if ($_SESSION['currentWindow'] === 'adminDog.php') {
+                    echo "<li class='subNav current'>Dogs";
+                } else {
+                    echo "<li class='subNav'><a href='adminDog.php'>Dogs</a>";
+                }
             } else {
-                echo "<li><a href='admin.php'>Admins</a>";
+                echo "<li><a href='adminBooking.php'>Admins</a>";
             }
         }
 

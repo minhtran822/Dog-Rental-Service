@@ -23,6 +23,13 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
     </nav>
 
     <main>
+        <div id="navAdmin">
+            <ul>
+                <li>View Booking
+                <li><a href="adminDog.php">View Dogs</a></li>
+            </ul>
+
+        </div>
         <h2> Existing bookings</h2>
         <table class="bookings">
             <thead>
