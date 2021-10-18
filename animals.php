@@ -36,7 +36,12 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
             <small> Office hours are between 9:00 and 16:00</small>
             <br>
             <label for="numHours">Number of Hours: </label>
-            <input type="text" id="numHours" name="numHours" required>
+            <input type="text" id="numHours" name="numHours" <?php
+                if (isset($_SESSION['numHours'])) {
+                $numH = $_SESSION['numHours'];
+                echo "value='$numH'";
+                }
+                ?> required>
             <small id="numHoursError">Please put in number of hours.</small>
             <br>
             <input type="submit" id="applyPickup" name="applyPickup" value="See Available dogs">
@@ -44,7 +49,12 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
         <div id="bookingDetails"></div>
         <form id="bookingInfo" action="validateCheckOut.php" method="post" novalidate>
             <label for="bookingName">Name: </label>
-            <input type="text" id="bookingName" name="bookingName"required>
+            <input type="text" id="bookingName" name="bookingName" <?php
+                if (isset($_SESSION['bookingName'])) {
+                $bname = $_SESSION['bookingName'];
+                echo "value='$bname'";
+                }
+                ?>required>
             <small id="bookingNameError"></small>
             <br>
             <input type="submit" id="bookingSave" value="Save">
