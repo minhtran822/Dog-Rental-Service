@@ -2,6 +2,11 @@
 session_start();
 require ('dbconnect.php');
 
+/**
+ * Authentication function to authenticate the login with the database
+ * Stored in protected directories
+ */
+
 $inName = htmlentities($_POST['loginUser']);
 $inPassword = htmlentities($_POST['loginPassword']);
 

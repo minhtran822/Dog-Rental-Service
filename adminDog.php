@@ -7,13 +7,14 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-    <link rel="stylesheet" href="stylesheet.css">
-    <script src="helpers/jQuery/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="stylesheet.css"><?php
+    $scriptList = array('helpers/jQuery/jquery-3.6.0.min.js');
+    include ('functions/header.php');
+    ?>
 </head>
 <body>
 <header>
     <?php
-    include ('functions/header.php');
     addHeader();
     ?>
 </header>
@@ -44,22 +45,22 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
     <form id="editDogDiv" action="validateDogEdit.php" method="post">
         <h2>Dog Details</h2>
         <label for="dogId">ID: </label>
-        <input type="text" id="dogId" name="dogId" required />
+        <input type="text" id="dogId" name="dogId" <?php if(isset($_SESSION['dogId'])) echo "value='".$_SESSION['dogId']."'";?> required />
         <br>
         <label for="dogName">Name: </label>
-        <input type="text" id="dogName" name="dogName" required />
+        <input type="text" id="dogName" name="dogName" <?php if(isset($_SESSION['dogName'])) echo "value='".$_SESSION['dogName']."'";?> required />
         <br>
         <label for="dogType">Type: </label>
-        <input type="text" id="dogType" name="dogType" required />
+        <input type="text" id="dogType" name="dogType" <?php if(isset($_SESSION['dogType'])) echo "value='".$_SESSION['dogType']."'";?>required />
         <br>
         <label for="dogSize">Size: </label>
-        <input type="text" id="dogSize" name="dogSize" required />
+        <input type="text" id="dogSize" name="dogSize" <?php if(isset($_SESSION['dogSize'])) echo "value='".$_SESSION['dogSize']."'";?>required />
         <br>
         <label for="dogDescription">Description: </label>
-        <input type="text" id="dogDescription" name="dogDescription" required />
+        <input type="text" id="dogDescription" name="dogDescription" <?php if(isset($_SESSION['dogDescription'])) echo "value='".$_SESSION['dogDescription']."'";?> required />
         <br>
         <label for="dogPrice">Price: </label>
-        <input type="text" id="dogPrice" name="dogPrice" required />
+        <input type="text" id="dogPrice" name="dogPrice" <?php if(isset($_SESSION['dogPrice'])) echo "value='".$_SESSION['dogPrice']."'";?>required />
         <br>
         <input type="submit" id="editDogBtn" name="editDogBtn" value="Edit" disabled>
         <input type="submit" id="addDogBtn" name="addDogBtn" value="Add" disabled>

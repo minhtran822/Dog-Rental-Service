@@ -7,13 +7,14 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-    <link rel="stylesheet" href="stylesheet.css">
-    <script src="helpers/jQuery/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="stylesheet.css"><?php
+    $scriptList = array('helpers/jQuery/jquery-3.6.0.min.js');
+    include ('functions/header.php');
+    ?>
 </head>
 <body>
     <header>
         <?php
-        include ('functions/header.php');
         addHeader();
         ?>
     </header>
@@ -43,6 +44,6 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
         </table>
     </main>
 
-    <script src="scripts/admin.js"></script>
+    <script src="scripts/bookingAdmin.js"></script>
 </body>
 </html>

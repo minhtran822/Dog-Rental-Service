@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+/**
+ * Logout function to handle the logout interactions on server-side
+ * Stored in protected directories
+ */
+
 unset($_SESSION['username']);
 
 if ($_SESSION['currentWindow'] === "adminBooking.php" ||

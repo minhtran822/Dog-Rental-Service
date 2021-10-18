@@ -1,7 +1,23 @@
+/*global $, alert, confirm, console */
+// noinspection JSUnusedLocalSymbols,JSUnresolvedVariable,JSJQueryEfficiency
+
+/**
+ * Admin Dogs module to show administrative view of the dogs
+ * and allow adding, editing and removing.
+ *
+ * Created by: Minh Tran, 17/10/2021
+ */
+
 let DogAdmin = (function(){
+    "use strict";
     let pub= {};
 
-
+    /**
+     * Establish a connection to the booking.json files
+     * to populate the table
+     *
+     * @param e The event representing the loading
+     */
     function getDogTable() {
         console.log("Get DogTable called");
         let target = $(".dogTable");
@@ -21,6 +37,13 @@ let DogAdmin = (function(){
         $("#editDogDiv *").attr('disabled', true);
     }
 
+    /**
+     * Load all the files in the data onto the admin page
+     * Append the data into a table.
+     *
+     * @param data The data read from connected file
+     * @param target the targeting table placeholder
+     */
     function loadDogTable(data, target){
         let dogs, i, dog, undefinedError;
         let imageName;
@@ -73,15 +96,20 @@ let DogAdmin = (function(){
 
     }
 
+    /**
+     * Enable and populate the div for editing the dog details
+     *
+     * @param e The event representing the loading
+     */
     function editDog(e){
         $("#editDogDiv *").attr('disabled', false);
         $("#editDogBtn").attr('disabled', false);
         $("#addDogBtn").attr('disabled', true);
         let selectedDog = $(e.target).closest("tr");
 
-        $("#dogId").val($(selectedDog).find("td:nth-child(1)").html());
-        $("#dogId").attr('readonly', true);
-        $("#dogId").addClass('readonly');
+        $("#dogId").val($(selectedDog).find("td:nth-child(1)").html())
+            .attr('readonly', true)
+            .addClass('readonly');
         $("#dogName").val($(selectedDog).find("td:nth-child(2)").html());
         $("#dogType").val($(selectedDog).find("td:nth-child(3)").html());
         $("#dogSize").val($(selectedDog).find("td:nth-child(4)").html());
@@ -89,6 +117,11 @@ let DogAdmin = (function(){
         $("#dogPrice").val($(selectedDog).find("td:nth-child(6)").html());
     }
 
+    /**
+     * Remove a dog by redirecting booking index to another page.
+     *
+     * @param e The event representing the loading
+     */
     function removeDog(e){
         $("#editDogDiv *").attr('disabled', true);
         let selectedDog = $(e.target).closest("tr").index();
@@ -96,20 +129,32 @@ let DogAdmin = (function(){
         let action = 'processDogRemove.php';
         let data = { "indexDog": selectedDog};
 
-        $.post(action, data, function(response) {
-            console.log(response);
-            window.location.reload();
-        });
+        if(confirm("Are you sure you want to remove the selected dog?")) {
+            $.post(action, data, function(response) {
+                console.log(response);
+                window.location.reload();
+            });
+        } else {
+            console.log("uh");
+        }
     }
 
+    /**
+     * Enable and populate the div for adding the dog details
+     *
+     * @param e The event representing the loading
+     */
     function addDog(e){
         $("#editDogDiv *").attr('disabled', false);
         $("#editDogBtn").attr('disabled', true);
         $("#addDogBtn").attr('disabled', false);
 
-
-        $("#dogId").attr('readonly', false);
-        $("#dogId").removeClass('readonly');
+        $("#dogId").val("").attr('readonly', false).removeClass('readonly');
+        $("#dogName").val("");
+        $("#dogType").val("");
+        $("#dogSize").val("");
+        $("#dogDescription").val("");
+        $("#dogPrice").val("");
     }
 
     pub.setup = function () {

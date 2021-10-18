@@ -1,4 +1,4 @@
-/*global Booking, $*/
+/*global Booking, $, alert*/
 // noinspection RedundantIfStatementJS
 
 /**
@@ -109,7 +109,6 @@ let InputValidator = (function (){
         } else {
             e.preventDefault();
         }
-        //return true;
     }
 
     pub.setup=function (){

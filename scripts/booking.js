@@ -154,13 +154,13 @@ let Booking = (function (){
          };
 
          booking = {
-            items:  JSON.parse(window.sessionStorage.getItem("currentBooking")),
+            dogId:  JSON.parse(window.sessionStorage.getItem("currentBooking")),
             name: $("#bookingName").val(),
             pickup: pickup,
             numHours: window.sessionStorage.getItem("hours")
          };
 
-         if(!(booking.items && booking.pickup && booking.numHours)){
+         if(!(booking.dogId && booking.pickup && booking.numHours)){
             $("#bookingSaveError").html("Please choose date, time and some items before saving");
          } else {
             $("#bookingSaveError").html("");

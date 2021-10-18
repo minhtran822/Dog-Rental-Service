@@ -14,9 +14,7 @@ include("functions/header.php");
     $_SESSION['dogDescription'] = htmlentities($_POST['dogDescription']);
     $_SESSION['dogPrice'] = htmlentities($_POST['dogPrice']);
 
-    if(isset($_POST['editDogBtn'])){}
-
-    //$index to keep the dog index or error
+    //$index to keep index of selected dog or the error
     $index = -1;
 
     //Get the json file
@@ -49,17 +47,29 @@ include("functions/header.php");
 
     echo "Index ".$index;
 
+    echo "<script>";
+
     switch($index) {
+        /* -3 is error Empty field
+         */
         case -3:
-            echo "Some field may have not been recorded successfully/ Please check again.";
+            echo "alert('Some field may have not been recorded successfully/ Please check again.');";
             break;
+        /* -2 is error Dog Existed
+           For edit, this is unnecessary
+           For adding, this is error
+         */
         case -2:
             if (isset($_POST['addDogBtn']))
-                echo "Dog with ID " .$_SESSION['dogId']. " already existed.";
+                echo "alert('Dog with ID " .$_SESSION['dogId']. " already existed.');";
             break;
+        /* -1 is error Dog Not Found
+           For edit, this is error
+           For adding, this is wanted case
+         */
         case -1:
             if (isset($_POST['editDogBtn']))
-                echo "Can't find dog with ID " .$_SESSION['dogId']. " in the database";
+                echo "alert('Can't find dog with ID " .$_SESSION['dogId']. " in the database');";
 
             if (isset($_POST['addDogBtn'])) {
                 $newDog = array("dogId" => $_SESSION['dogId'],
@@ -74,15 +84,26 @@ include("functions/header.php");
                 $addDog = json_encode($json_object,JSON_PRETTY_PRINT)."\n";
 
                 if(file_put_contents('src/newBooking.json',$addDog)){
-                    echo "JSON file created successfullly";
+                    echo "console.log('JSON file created successfullly');";
+                    unset($_SESSION['dogId']);
+                    unset($_SESSION['dogName']);
+                    unset($_SESSION['dogType']);
+                    unset($_SESSION['dogSize']);
+                    unset($_SESSION['dogDescription']);
+                    unset($_SESSION['dogPrice']);
                 } else {
+                    echo "alert('";
                     print_r(error_get_last(), true);
+                    echo "');";
                 }
             }
             break;
+        /* Positive index means the dog exists in array
+            Other negative index means unknown error
+         */
         default:
             if ($index<0){
-                echo "Some unknown indexing have occurred";
+                echo "alert('Some unknown indexing have occurred');";
             } else {
                 if (isset($_POST['editDogBtn'])){
                     $json_object->animals->dogs[$index]->dogId = $_SESSION['dogId'];
@@ -95,25 +116,25 @@ include("functions/header.php");
                     $json_output = json_encode($json_object,JSON_PRETTY_PRINT)."\n";
 
                     if(file_put_contents('src/newBooking.json',$json_output)){
-                        echo "JSON file created successfullly";
+                        echo "console.log('JSON file created successfullly');";
+                        unset($_SESSION['dogId']);
+                        unset($_SESSION['dogName']);
+                        unset($_SESSION['dogType']);
+                        unset($_SESSION['dogSize']);
+                        unset($_SESSION['dogDescription']);
+                        unset($_SESSION['dogPrice']);
                     } else {
+                        echo "alert('";
                         print_r(error_get_last(), true);
+                        echo "');";
                     }
                 }
             }
     }
 
-
-
-
-        if(isset($_POST['addDogBtn'])){
-            if(checkDogExist($_SESSION['dogId'])) echo "Dog already existed";
-        }
-
-        echo "Cool";
-        echo $_SESSION['numHours'];
-
-
+    //Reload the page
+    echo "
+          window.location.href='adminDog.php'</script>";
     ?>
 </main>
 

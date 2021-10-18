@@ -8,16 +8,16 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
     <meta charset="UTF-8">
     <title>Track</title>
     <link rel="stylesheet" href="stylesheet.css">
-    <script src="helpers/jQuery/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="helpers/leaflet/leaflet.css"/>
-    <script src="helpers/leaflet/leaflet.js"></script>
-    <script src="scripts/map.js"></script>
+    <?php
+    $scriptList = array('helpers/jQuery/jquery-3.6.0.min.js', 'helpers/leaflet/leaflet.js', 'scripts/map.js');
+    include ('functions/header.php');
+    ?>
 </head>
 <body>
 
     <header>
         <?php
-        include ('functions/header.php');
         addHeader();
         ?>
     </header>

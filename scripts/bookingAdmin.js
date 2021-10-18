@@ -1,11 +1,10 @@
-/*global $, console, alert */
+/*global $, console, alert, confirm */
 // noinspection JSUnusedLocalSymbols,JSUnresolvedVariable
 
 /**
- * Admin module to show administrative view
- * Currently as required, it is only showing existing bookings
+ * Admin Booking module to show administrative view of the bookings
  *
- * Created by: Minh Tran, 04/09/2021
+ * Created by: Minh Tran, 17/10/2021
  */
 
 let AdminView = (function (){
@@ -70,16 +69,26 @@ let AdminView = (function (){
         }
     }
 
+    /**
+     * Remove a booking by redirecting booking index to another page.
+     *
+     * @param e The event representing the loading
+     */
     function removeBooking(e){
         let selectedBooking = $(e.target).closest("tr").index();
 
         let action = 'processBookingRemove.php';
         let data = { "indexBooking": selectedBooking};
 
-        $.post(action, data, function(response) {
-            console.log(response);
-            window.location.reload();
-        });
+        if(confirm("Are you sure you want to remove the selected booking?")) {
+            $.post(action, data, function(response) {
+                console.log(response);
+                window.location.reload();
+            });
+        } else {
+            console.log("uh");
+        }
+
     }
 
     pub.setup = function (){

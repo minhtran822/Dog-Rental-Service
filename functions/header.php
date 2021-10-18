@@ -6,6 +6,10 @@ if (isset($scriptList) && is_array($scriptList)) {
     }
 }
 
+
+/**
+ * Populate the header
+ */
 function addHeader(){
     echo "<h1> Dog Rental Service</h1>";
     if (!isset($_SESSION['username'])) {
@@ -19,7 +23,7 @@ function addHeader(){
                     <input type=\"submit\" id=\"loginSubmit\" value=\"Login\"><br>";
 
         if(isset($_SESSION['errorLogin'])){
-            echo "<p>".$_SESSION['errorLogin']."</p>";
+            echo "<p style='float: right; font-size: 12px;'>".$_SESSION['errorLogin']."</p>";
         }
 
         echo "</form>
@@ -35,6 +39,9 @@ function addHeader(){
     }
 }
 
+/**
+ * Populate the navigation bar
+ */
 function addNavBar(){
     if (isset($_SESSION['currentWindow'])) {
         echo "<ul>";

@@ -1,8 +1,18 @@
-var GetBookingContent = (function(){
-    var pub={};
+/* global $, console*/
+// noinspection JSUnusedLocalSymbols
+
+/**
+ * Get Booking Content module to export into json files
+ * through generating a post request
+ *
+ * Created by: Minh Tran, 17/10/2021
+ */
+let GetBookingContent = (function(){
+    "use strict";
+    let pub={};
 
     pub.setup = function(){
-        var booking = JSON.stringify(window.localStorage.getItem('booking'));
+        let booking = JSON.stringify(window.localStorage.getItem('booking'));
 
         $.ajax({
             type: "POST",

@@ -9,6 +9,3 @@ include("functions/header.php");
     include ("functions/logoutFunction.php");
     ?>
 </main>
-
-</body>
-</html>

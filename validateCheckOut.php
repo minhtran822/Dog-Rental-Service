@@ -14,6 +14,10 @@ include("functions/header.php");
             && checkPickUp($_SESSION['pickupDate'], $_SESSION['pickupTime'])){
             echo "Success";
             echo "<script src=\"scripts/getBookingContent.js\"></script>";
+            unset($_SESSION['numHours']);
+            unset($_SESSION['bookingName']);
+            unset($_SESSION['pickupDate']);
+            unset($_SESSION['pickupTime']);
         } else {
             echo "Try again";
             echo $_SESSION['numHours'];

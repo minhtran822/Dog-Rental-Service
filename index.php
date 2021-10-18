@@ -8,12 +8,14 @@ $_SESSION["currentWindow"] = basename($_SERVER["SCRIPT_FILENAME"]);
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="stylesheet.css">
-    <script src="helpers/jQuery/jquery-3.6.0.min.js"></script>
+    <?php
+    $scriptList = array('helpers/jQuery/jquery-3.6.0.min.js');
+    include ('functions/header.php');
+    ?>
 </head>
 <body>
     <header>
         <?php
-            include ('functions/header.php');
             addHeader();
         ?>
     </header>
