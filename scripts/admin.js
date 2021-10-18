@@ -58,6 +58,7 @@ let AdminView = (function (){
                         "<td>"+ booking.name + "</td>" +
                         "<td>"+ booking.pickup.time + "," + booking.pickup.day + "/" + booking.pickup.month + "/" + booking.pickup.year + "</td>" +
                         "<td>"+ booking.numHours + "</td>" +
+                        "<td><button class='cancelBooking'>Cancel</button> </td>" +
                         "</tr>"
                     );
 
