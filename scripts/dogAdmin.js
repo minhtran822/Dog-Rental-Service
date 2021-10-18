@@ -93,8 +93,8 @@ let DogAdmin = (function(){
         $("#editDogDiv *").attr('disabled', true);
         let selectedDog = $(e.target).closest("tr").index();
 
-        let action = 'processDogEdit.php';
-        let data = { "index": selectedDog};
+        let action = 'processDogRemove.php';
+        let data = { "indexDog": selectedDog};
 
         $.post(action, data, function(response) {
             console.log(response);

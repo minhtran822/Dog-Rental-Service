@@ -1,7 +1,7 @@
 <?php
-if (isset($_POST['index'])){
-    echo "Received ".$_POST['index'];
-    $i = $_POST['index'];
+if (isset($_POST['indexDog'])){
+    echo "Received ".$_POST['indexDog'];
+    $i = $_POST['indexDog'];
 
 
 //Get the json file
