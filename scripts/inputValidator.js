@@ -97,6 +97,15 @@ let InputValidator = (function (){
         if(checkBookingName()) {
             //Call to Bookings module to save the file
             Booking.saveBooking(e);
+            if($("#bookingSaveError").html()!==""){
+                e.preventDefault();
+            }else {
+                let action = $(e.currentTarget).attr('action');
+                let data = $(e.currentTarget).serialize();
+                $.post(action, data, function (response) {
+                    alert(response);
+                });
+            }
         } else {
             e.preventDefault();
         }

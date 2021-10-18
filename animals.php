@@ -36,7 +36,7 @@ include ('functions/validationFunctions.php');
         </ul>
     </nav>
     <main>
-        <form id="pickupSelect" action="functions/validatePickUp.php" method="post" novalidate>
+        <form id="pickupSelect" action="validatePickUp.php" method="post" novalidate>
             <label for="pickupDate">Date: </label>
             <input type="date" id="pickupDate" name="pickupDate"
                    value="<?php echo date('Y-m-d'); ?>"
@@ -55,7 +55,7 @@ include ('functions/validationFunctions.php');
             <input type="submit" id="applyPickup" name="applyPickup" value="See Available dogs">
         </form>
         <div id="bookingDetails"></div>
-        <form id="bookingInfo" action="functions/validateCheckOut.php" method="post" novalidate>
+        <form id="bookingInfo" action="validateCheckOut.php" method="post" novalidate>
             <label for="bookingName">Name: </label>
             <input type="text" id="bookingName" name="bookingName"required>
             <small id="bookingNameError"></small>

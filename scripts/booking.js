@@ -57,7 +57,7 @@ let Booking = (function (){
    function viewBooking(e){
       //Load the pickup details
       $("#bookingDetails").empty().append(
-          "<p>Pickup time: "+window.sessionStorage.getItem("time")+"</p>"+
+          "<p>Pickup time: "+window.sessionStorage.getItem("pickup")+"</p>"+
           "<p>Number of hours: "+window.sessionStorage.getItem("hours")+"</p>"+
           "<p>Items: </p>"
       );
@@ -144,12 +144,19 @@ let Booking = (function (){
     * @param e The event representing the button clicked
     */
    pub.saveBooking= function (e){
-      let booking;
+      let booking, pickup;
       if($("bookingNameError").html()!== ""){
+         pickup = {
+            time: window.sessionStorage.getItem("time"),
+            day: window.sessionStorage.getItem("date"),
+            month: window.sessionStorage.getItem("month"),
+            year: window.sessionStorage.getItem("year")
+         };
+
          booking = {
             items:  JSON.parse(window.sessionStorage.getItem("currentBooking")),
             name: $("#bookingName").val(),
-            pickup: window.sessionStorage.getItem("time"),
+            pickup: pickup,
             numHours: window.sessionStorage.getItem("hours")
          };
 
@@ -159,14 +166,8 @@ let Booking = (function (){
             $("#bookingSaveError").html("");
             window.sessionStorage.clear();
             window.localStorage.setItem("booking", JSON.stringify(booking));
-            alert("Booking saved");
+            console.log("Booking saved");
             //window.location.reload();
-
-            let action = $(e.currentTarget).attr('action');
-            let data = $(e.currentTarget).serialize();
-            $.post(action, data, function(response) {
-               alert(response);
-            });
          }
 
       }

@@ -28,8 +28,12 @@ let Dogs = (function(){
 
         //Store the booking details used for filtering
         //This will be updated everytime the booking details changed
-        window.sessionStorage.setItem("time", pickupTime +","+pickupDate.getDate()+"/"+(pickupDate.getMonth()+1)+'/'+pickupDate.getFullYear());
+        window.sessionStorage.setItem("pickup", pickupTime +","+pickupDate.getDate()+"/"+(pickupDate.getMonth()+1)+'/'+pickupDate.getFullYear());
         window.sessionStorage.setItem("hours", numHours);
+        window.sessionStorage.setItem("time", pickupTime);
+        window.sessionStorage.setItem("date", ""+pickupDate.getDate());
+        window.sessionStorage.setItem("month", ""+(pickupDate.getMonth()+1));
+        window.sessionStorage.setItem("year", ""+pickupDate.getFullYear());
 
         $.ajax({
             type: "GET",
@@ -48,7 +52,7 @@ let Dogs = (function(){
         let action = $(e.currentTarget).attr('action');
         let data = $(e.currentTarget).serialize();
         $.post(action, data, function(response) {
-            alert(response);
+            console.log(response);
         });
     }
 
