@@ -19,7 +19,8 @@ include("functions/header.php");
             unset($_SESSION['pickupDate']);
             unset($_SESSION['pickupTime']);
         } else {
-            echo "<script>alert('Check the input again')</script>";
+            echo "<script>alert('Check the input again')
+                window.location.href='animals.php';</script>";
             echo $_SESSION['numHours'];
         }
 
