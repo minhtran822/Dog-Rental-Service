@@ -19,7 +19,7 @@ include("functions/header.php");
             unset($_SESSION['pickupDate']);
             unset($_SESSION['pickupTime']);
         } else {
-            echo "Try again";
+            echo "<script>alert('Check the input again')</script>";
             echo $_SESSION['numHours'];
         }
 
