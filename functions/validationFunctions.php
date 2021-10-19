@@ -1,11 +1,20 @@
 <?php
 /**
+ * Validation functions for the Dog Rental Service site.
+ *
+ * Some checks function taken from: Steven Mills - Validation Functions in provided lab files
+ */
+
+
+/**
  * Check to see if a string is composed entirely of the digits 0-9.
  * Note that this is different to checking if a string is numeric since
  * +/- signs and decimal points are not permitted.
  *
+ * This is acquired from the lab files.
+ *
  * @param string $str The string to check.
- * @return True if $str is composed entirely of digits, false otherwise.
+ * @return Boolean true if $str is composed entirely of digits, false otherwise.
  */
 function isDigits($str) {
     $pattern='/^[0-9]+$/';
@@ -16,8 +25,10 @@ function isDigits($str) {
  * Check to see if a string contains any content or not.
  * Leading and trailing whitespace are not considered to be 'content'.
  *
+ * This is acquired from the lab files.
+ *
  * @param string $str The string to check.
- * @return True if $str is empty, false otherwise.
+ * @return Boolean true if $str is empty, false otherwise.
  */
 function isEmpty($str) {
     return strlen(trim($str)) == 0;
@@ -28,7 +39,7 @@ function isEmpty($str) {
  *
  * @param string $str The string to check.
  * @param integer $len The expected min length of $str.
- * @result True if $str is longer than $len, false otherwise.
+ * @return Boolean true if $str is longer than $len, false otherwise.
  */
 function checkMinLength($str, $len) {
     return strlen(trim($str)) >= $len;
@@ -38,7 +49,7 @@ function checkMinLength($str, $len) {
  * Check to see the format of the numHours input
  *
  * @param string $numHours the input to be checked
- * @result True if $numHours is not empty and make of digits
+ * @return Boolean True if $numHours is not empty and make of digits
  * false otherwise.
  */
 function checkNumHours($numHours){
@@ -48,9 +59,9 @@ function checkNumHours($numHours){
 /**
  * Check to see the format of the date and time input
  *
- * @param Date $pickupdate the input to be checked
+ * @param string $pickupdate the input to be checked
  * @param string $pickupTime the input to be checked
- * @result True if both are not empty
+ * @return Boolean True if both are not empty
  * false otherwise.
  */
 function checkPickUp($pickupDate, $pickupTime){
@@ -61,7 +72,7 @@ function checkPickUp($pickupDate, $pickupTime){
  * Check to see the format of the customer details
  *
  * @param string $bookingName the input to be checked
- * @result True if $bookingName is not empty and longer than 2
+ * @return Boolean true if $bookingName is not empty and longer than 2
  * false otherwise.
  */
 function checkCustomerDetails($bookingName){
