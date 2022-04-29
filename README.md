@@ -1,6 +1,6 @@
 # Dog-Rental-Service
 ## Author: Minh Tran
-## Source: COSC212 Assignment
+### Source: COSC212 Assignment
 
 Dog Rental Service is a web application to arrange bookings time of our dogs for hired.
 
@@ -20,3 +20,5 @@ Are you a dog lover but your flatting regulation don't allow you to have a dog? 
 #### Limitations:
 
 #### Further improvements:
+* **Launch the application on external server:** Put the current application on an external server to address limitations of using university server
+* **Create a persistent database schema:** There is no stable database creation attached to the application that cna be transered to the external server.
